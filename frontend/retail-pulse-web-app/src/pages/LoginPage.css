@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap');
+
+/* ── RESET ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+/* ── ROOT ── */
+.login-root {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'DM Sans', sans-serif;
+  overflow: hidden;
+}
+
+/* ── LEFT PANEL ── */
+.login-left {
+  position: relative;
+  width: 48%;
+  flex-shrink: 0;
+  background: linear-gradient(155deg, #1e3a5f 0%, #2c5282 55%, #1a3353 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 52px 52px 40px;
+  overflow: hidden;
+  color: #fff;
+}
+
+.login-left::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.login-left::after {
+  content: '';
+  position: absolute;
+  bottom: -120px;
+  right: -80px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: rgba(100, 160, 255, 0.08);
+  pointer-events: none;
+}
+
+/* Left — Brand */
+.left-brand {
+  position: relative;
+  z-index: 1;
+}
+
+.brand-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 16px;
+}
+
+.brand-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 400;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.brand-tagline {
+  font-size: 13.5px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Left — Features */
+.left-features {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.feature-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 11px 16px;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  width: fit-content;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s;
+  cursor: default;
+}
+
+.feature-pill:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.feature-icon {
+  font-size: 15px;
+}
+
+/* Left — Footer */
+.left-footer {
+  position: relative;
+  z-index: 1;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.04em;
+}
+
+/* ── RIGHT PANEL ── */
+.login-right {
+  flex: 1;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 48px;
+  background: #fff;
+  position: relative;
+}
+
+.login-form-wrap {
+  width: 100%;
+  max-width: 380px;
+}
+
+/* Form — Headings */
+.form-heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: #111827;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.form-sub {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+/* Form — Fields */
+.field-group {
+  margin-bottom: 18px;
+}
+
+.field-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 7px;
+}
+
+.field-input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: #111827;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field-input::placeholder {
+  color: #9ca3af;
+}
+
+.field-input:focus {
+  border-color: #2c5282;
+  box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.1);
+}
+
+/* Form — Password */
+.password-wrap {
+  position: relative;
+}
+
+.password-wrap .field-input {
+  padding-right: 60px;
+  letter-spacing: 0.06em;
+}
+
+.show-btn {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: #2c5282;
+  padding: 4px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Form — Forgot */
+.forgot-link {
+  display: block;
+  text-align: right;
+  font-size: 13px;
+  color: #2c5282;
+  text-decoration: none;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+/* Form — Submit */
+.signin-btn {
+  width: 100%;
+  padding: 13px;
+  margin-top: 24px;
+  background: #1e3a5f;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+  box-shadow: 0 4px 14px rgba(30, 58, 95, 0.3);
+}
+
+.signin-btn:hover {
+  background: #2c5282;
+  box-shadow: 0 6px 20px rgba(30, 58, 95, 0.35);
+}
+
+.signin-btn:active {
+  transform: scale(0.99);
+}
+
+/* Form — Role Notice */
+.role-notice {
+  margin-top: 20px;
+  padding: 14px 16px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.role-icon {
+  font-size: 15px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.role-notice-text strong {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #1e3a5f;
+  margin-bottom: 3px;
+}
+
+.role-notice-text span {
+  display: block;
+  font-size: 12px;
+  color: #3b82f6;
+  line-height: 1.5;
+}
+
+/* Right — Footer */
+.right-footer {
+  margin-top: 32px;
+  font-size: 11px;
+  color: #9ca3af;
+  text-align: center;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .login-left {
+    display: none;
+  }
+
+  .login-right {
+    padding: 48px 28px;
+  }
+}
+
+
+
+/* ── MESSAGE BANNER ── */
+.message {
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+ 
+.message.success {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #15803d;
+}
+ 
+.message.error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+}
