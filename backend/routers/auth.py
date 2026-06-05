@@ -3,8 +3,20 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel
 from database import supabase, admin_supabase
 
+
 router = APIRouter(tags=["Authentication"])
 security = HTTPBearer()
+
+
+
+def role_required(*roles):
+    async def checker(user=Depends(get_current_user)):
+        if user.role not in roles:
+            raise HTTPException(status_code=403, detail="You do not have permission to perform this action")
+        return user
+    return Depends(checker)
+
+
 
 class LoginRequest(BaseModel):
     email: str
