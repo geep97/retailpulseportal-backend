@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from database import supabase, admin_supabase, get_db
 from models import User
 from sqlalchemy.orm import Session
+from typing import Literal
 
 
 router = APIRouter(tags=["Authentication"])
@@ -13,6 +14,13 @@ security = HTTPBearer()
 class LoginRequest(BaseModel):
     email: str
     password: str
+
+
+class CreateUserRequest(BaseModel):
+    email: str
+    password: str
+    role: Literal["ops", "manager"]
+    username: str
 
 
 async def get_current_user(
@@ -64,14 +72,72 @@ async def login(credentials: LoginRequest):
         raise HTTPException(status_code=401, detail=f"Login failed: {str(e)}")
 
 
-@router.post("/admin/create-user")
-async def create_user(user_data: LoginRequest):
+
+
+@router.post("/admin/create-user", dependencies=[role_required("ops")])
+async def create_user(
+    user_data: CreateUserRequest,
+    db: Session = Depends(get_db),
+    user=Depends(get_current_user)
+):
     try:
+        # Create user in Supabase Auth
         response = admin_supabase.auth.admin.create_user({
             "email": user_data.email,
             "password": user_data.password,
             "email_confirm": True
         })
-        return {"message": "User created successfully", "user": response.user}
+
+        auth_id = str(response.user.id)
+
+        print(f"Supabase User ID: {auth_id}")
+
+        # Check if profile already exists
+        profile = db.query(User).filter(
+            User.id == auth_id
+        ).first()
+
+        if profile:
+            # Update missing auth_provider_id
+            profile.auth_provider_id = auth_id
+            profile.username = user_data.username
+            profile.role = user_data.role
+
+            db.commit()
+
+            return {
+                "message": "Existing profile updated",
+                "user": response.user
+            }
+
+        # Create new profile
+        new_profile = User(
+            id=auth_id,
+            username=user_data.username,
+            role=user_data.role,
+            auth_provider_id=auth_id
+        )
+
+        db.add(new_profile)
+        db.commit()
+        db.refresh(new_profile)
+
+        print(
+            f"Created profile: id={auth_id}, auth_provider_id={auth_id}"
+        )
+
+        return {
+            "message": "User created successfully",
+            "user": response.user
+        }
+
+    except HTTPException:
+        raise
+
     except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
+        db.rollback()
+        print("ERROR:", str(e))
+        raise HTTPException(
+            status_code=400,
+            detail=str(e)
+        )
