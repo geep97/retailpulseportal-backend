@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Ensure this is installed
+import { useNavigate } from 'react-router-dom'; 
 import './LoginPage.css';
 
 interface Feature {
@@ -13,6 +13,9 @@ const FEATURES: Feature[] = [
   { icon: '📊', label: 'Weekly Data Uploads' },
   { icon: '👥', label: 'All 5 Accra Branches' },
 ];
+
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function LoginPage() {
   const [email, setEmail] = useState<string>('');
@@ -29,7 +32,7 @@ export default function LoginPage() {
     setMessage(null);
 
     try {
-      const response = await fetch('http://localhost:8000/login', {
+      const response = await fetch(`${API_URL}/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -49,7 +52,7 @@ export default function LoginPage() {
         }, 1000);
         
       } else {
-        // Use the detail field returned from your FastAPI backend
+        // 
         setMessage({ text: data.detail || 'Invalid email or password.', type: 'error' });
       }
     } catch (error) {
