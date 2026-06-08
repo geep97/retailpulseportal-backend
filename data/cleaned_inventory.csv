@@ -1,0 +1,251 @@
+store_id,store_name,product_name,category,sku,stock_qty,reorder_level,cost_price_ghs,last_restocked,supplier
+STR001,Accra Central,Smart TV 43in,Electronics,SKU-32416,39.0,14,65.29,2023-09-14,Delta Traders
+STR001,Accra Central,Bluetooth Speaker,Electronics,SKU-85433,51.0,24,265.28,2023-09-15,Accra Wholesale Co
+STR001,Accra Central,Wireless Earbuds,Electronics,SKU-78518,72.0,17,534.78,2023-09-11,West Africa Distributors
+STR001,Accra Central,Phone Charger,Electronics,SKU-15396,105.0,23,156.11,2023-10-23,Ghana Imports Ltd
+STR001,Accra Central,Power Bank,Electronics,SKU-71899,22.0,23,117.39,2023-10-16,Ghana Imports Ltd
+STR001,Accra Central,Extension Cable,Electronics,SKU-20311,116.0,20,245.62,2023-10-13,Kumasi Supplies GH
+STR001,Accra Central,LED Desk Lamp,Electronics,SKU-17399,13.0,17,265.88,2023-10-22,Ghana Imports Ltd
+STR001,Accra Central,Webcam HD,Electronics,SKU-10547,28.0,10,100.73,2023-09-01,Kumasi Supplies GH
+STR001,Accra Central,USB Hub,Electronics,SKU-56357,148.0,10,314.94,2023-10-11,Ghana Imports Ltd
+STR001,Accra Central,Portable Fan,Electronics,SKU-19947,133.0,12,537.44,2023-12-18,Delta Traders
+STR001,Accra Central,Rice 25kg,Grocery,SKU-61572,61.0,21,6.85,2023-12-12,Accra Wholesale Co
+STR001,Accra Central,Cooking Oil 5L,Grocery,SKU-96052,4.0,30,21.15,2023-12-20,Delta Traders
+STR001,Accra Central,Tomato Paste 400g,Grocery,SKU-12006,81.0,12,8.88,2023-12-21,Kumasi Supplies GH
+STR001,Accra Central,Sugar 2kg,Grocery,SKU-64082,148.0,19,22.62,2023-09-25,Ghana Imports Ltd
+STR001,Accra Central,Flour 1kg,Grocery,SKU-85379,37.0,18,19.77,2023-09-23,West Africa Distributors
+STR001,Accra Central,Milk Powder 400g,Grocery,SKU-86529,85.0,30,12.22,2023-12-28,Ghana Imports Ltd
+STR001,Accra Central,Sardines 125g,Grocery,SKU-82674,8.0,19,16.36,2023-09-09,West Africa Distributors
+STR001,Accra Central,Oats 500g,Grocery,SKU-86628,0.0,20,15.61,2023-09-13,Accra Wholesale Co
+STR001,Accra Central,Biscuits Pack,Grocery,SKU-84175,93.0,17,6.53,2023-09-29,Accra Wholesale Co
+STR001,Accra Central,Cornflakes 500g,Grocery,SKU-81196,197.0,21,1.82,2023-11-29,Kumasi Supplies GH
+STR001,Accra Central,Men T-Shirt,Clothing,SKU-46992,147.0,27,57.61,2023-12-25,Kumasi Supplies GH
+STR001,Accra Central,Women Blouse,Clothing,SKU-28658,115.0,24,62.41,2023-09-05,Kumasi Supplies GH
+STR001,Accra Central,Children Shorts,Clothing,SKU-40156,69.0,24,10.63,2023-09-08,Accra Wholesale Co
+STR001,Accra Central,School Uniform,Clothing,SKU-94857,159.0,15,33.12,2023-11-10,Accra Wholesale Co
+STR001,Accra Central,Men Trousers,Clothing,SKU-86858,144.0,25,72.58,2023-09-12,Delta Traders
+STR001,Accra Central,Women Dress,Clothing,SKU-22130,116.0,22,35.38,2023-11-17,Ghana Imports Ltd
+STR001,Accra Central,Sneakers Size 40,Clothing,SKU-29376,189.0,17,34.05,2023-11-28,Ghana Imports Ltd
+STR001,Accra Central,Sandals,Clothing,SKU-65343,184.0,21,76.71,2023-12-24,Kumasi Supplies GH
+STR001,Accra Central,Baseball Cap,Clothing,SKU-56427,63.0,30,51.21,2023-09-10,Accra Wholesale Co
+STR001,Accra Central,Socks Pack 3,Clothing,SKU-19085,164.0,25,77.66,2023-09-04,West Africa Distributors
+STR001,Accra Central,Mop & Bucket Set,Household,SKU-63358,183.0,30,4.45,2023-10-08,Accra Wholesale Co
+STR001,Accra Central,Washing Powder 1kg,Household,SKU-68456,51.0,21,41.43,2023-10-30,Kumasi Supplies GH
+STR001,Accra Central,Toilet Cleaner,Household,SKU-36474,94.0,10,36.42,2023-11-13,Accra Wholesale Co
+STR001,Accra Central,Dish Soap 750ml,Household,SKU-24673,165.0,20,37.09,2023-10-25,Accra Wholesale Co
+STR001,Accra Central,Broom,Household,SKU-93114,40.0,23,20.53,2023-09-04,Kumasi Supplies GH
+STR001,Accra Central,Plastic Basin,Household,SKU-16181,16.0,13,33.86,2023-11-11,Ghana Imports Ltd
+STR001,Accra Central,Storage Box,Household,SKU-83866,0.0,29,31.96,2023-12-23,Ghana Imports Ltd
+STR001,Accra Central,Air Freshener,Household,SKU-32032,71.0,28,25.96,2023-09-01,Kumasi Supplies GH
+STR001,Accra Central,Candles Pack,Household,SKU-59261,34.0,25,4.68,2023-11-28,Accra Wholesale Co
+STR001,Accra Central,Mosquito Net,Household,SKU-57982,171.0,26,23.58,2023-10-30,Kumasi Supplies GH
+STR001,Accra Central,Body Lotion 400ml,Health & Beauty,SKU-97543,21.0,18,30.76,2023-11-25,Kumasi Supplies GH
+STR001,Accra Central,Shampoo 300ml,Health & Beauty,SKU-80961,25.0,13,19.19,2023-11-12,Delta Traders
+STR001,Accra Central,Toothpaste 100g,Health & Beauty,SKU-29771,7.0,25,32.69,2023-10-28,West Africa Distributors
+STR001,Accra Central,Hand Sanitizer 250ml,Health & Beauty,SKU-86045,178.0,28,34.47,2023-11-27,Accra Wholesale Co
+STR001,Accra Central,Painkillers 20s,Health & Beauty,SKU-50543,30.0,16,7.21,2023-10-18,Delta Traders
+STR001,Accra Central,Sunscreen SPF30,Health & Beauty,SKU-40622,72.0,26,33.53,2023-12-10,Ghana Imports Ltd
+STR001,Accra Central,Baby Powder,Health & Beauty,SKU-40429,108.0,24,3.83,2023-12-05,Delta Traders
+STR001,Accra Central,Lip Balm,Health & Beauty,SKU-16587,92.0,27,16.16,2023-09-16,Ghana Imports Ltd
+STR001,Accra Central,Face Wash,Health & Beauty,SKU-21598,130.0,24,18.64,2023-12-30,Kumasi Supplies GH
+STR001,Accra Central,Deodorant,Health & Beauty,SKU-56176,157.0,29,22.57,2023-11-25,Delta Traders
+STR002,Kumasi Main,Smart TV 43in,Electronics,SKU-51780,95.0,22,186.71,2023-11-17,Ghana Imports Ltd
+STR002,Kumasi Main,Bluetooth Speaker,Electronics,SKU-21292,9.0,12,118.4,2023-11-18,Kumasi Supplies GH
+STR002,Kumasi Main,Wireless Earbuds,Electronics,SKU-19936,147.0,13,495.53,2023-09-20,Kumasi Supplies GH
+STR002,Kumasi Main,Phone Charger,Electronics,SKU-54613,107.0,28,83.82,2023-11-13,West Africa Distributors
+STR002,Kumasi Main,Power Bank,Electronics,SKU-21215,0.0,30,150.87,2023-09-10,Delta Traders
+STR002,Kumasi Main,Extension Cable,Electronics,SKU-51376,82.0,30,277.22,2023-10-21,Kumasi Supplies GH
+STR002,Kumasi Main,LED Desk Lamp,Electronics,SKU-66619,84.0,15,222.08,2023-10-25,Accra Wholesale Co
+STR002,Kumasi Main,Webcam HD,Electronics,SKU-82145,140.0,25,340.46,2023-10-03,Ghana Imports Ltd
+STR002,Kumasi Main,USB Hub,Electronics,SKU-56767,103.0,28,84.77,2023-12-19,West Africa Distributors
+STR002,Kumasi Main,Portable Fan,Electronics,SKU-98345,42.0,14,89.25,2023-09-18,Kumasi Supplies GH
+STR002,Kumasi Main,Rice 25kg,Grocery,SKU-70332,85.0,10,18.19,2023-12-11,West Africa Distributors
+STR002,Kumasi Main,Cooking Oil 5L,Grocery,SKU-24805,112.0,21,19.24,2023-12-17,West Africa Distributors
+STR002,Kumasi Main,Tomato Paste 400g,Grocery,SKU-44751,126.0,25,26.41,2023-12-09,West Africa Distributors
+STR002,Kumasi Main,Sugar 2kg,Grocery,SKU-32585,171.0,19,6.88,2023-09-28,West Africa Distributors
+STR002,Kumasi Main,Flour 1kg,Grocery,SKU-94002,178.0,12,6.94,2023-09-09,West Africa Distributors
+STR002,Kumasi Main,Milk Powder 400g,Grocery,SKU-11854,117.0,15,2.46,2023-09-07,Ghana Imports Ltd
+STR002,Kumasi Main,Sardines 125g,Grocery,SKU-36258,151.0,21,20.45,2023-10-28,Accra Wholesale Co
+STR002,Kumasi Main,Oats 500g,Grocery,SKU-65245,51.0,28,24.27,2023-09-13,Kumasi Supplies GH
+STR002,Kumasi Main,Biscuits Pack,Grocery,SKU-41504,1.0,26,24.48,2023-11-08,Ghana Imports Ltd
+STR002,Kumasi Main,Cornflakes 500g,Grocery,SKU-94427,58.0,28,11.9,2023-11-22,Ghana Imports Ltd
+STR002,Kumasi Main,Men T-Shirt,Clothing,SKU-48828,4.0,19,14.02,2023-09-19,Delta Traders
+STR002,Kumasi Main,Women Blouse,Clothing,SKU-52091,89.0,18,42.18,2023-12-17,Ghana Imports Ltd
+STR002,Kumasi Main,Children Shorts,Clothing,SKU-13718,18.0,26,17.17,2023-11-09,Delta Traders
+STR002,Kumasi Main,School Uniform,Clothing,SKU-19075,39.0,30,53.59,2023-11-15,Kumasi Supplies GH
+STR002,Kumasi Main,Men Trousers,Clothing,SKU-90696,135.0,19,76.03,2023-12-11,Ghana Imports Ltd
+STR002,Kumasi Main,Women Dress,Clothing,SKU-62054,48.0,19,32.03,2023-10-29,Ghana Imports Ltd
+STR002,Kumasi Main,Sneakers Size 40,Clothing,SKU-29326,105.0,19,53.69,2023-12-17,Accra Wholesale Co
+STR002,Kumasi Main,Sandals,Clothing,SKU-30758,82.0,19,30.46,2023-10-24,Accra Wholesale Co
+STR002,Kumasi Main,Baseball Cap,Clothing,SKU-88867,87.0,18,75.38,2023-12-11,Accra Wholesale Co
+STR002,Kumasi Main,Socks Pack 3,Clothing,SKU-39197,72.0,10,19.71,2023-11-02,Kumasi Supplies GH
+STR002,Kumasi Main,Mop & Bucket Set,Household,SKU-49630,70.0,22,12.47,2023-10-20,Delta Traders
+STR002,Kumasi Main,Washing Powder 1kg,Household,SKU-43333,66.0,25,39.32,2023-11-27,Ghana Imports Ltd
+STR002,Kumasi Main,Toilet Cleaner,Household,SKU-85304,63.0,28,19.23,2023-11-07,Kumasi Supplies GH
+STR002,Kumasi Main,Dish Soap 750ml,Household,SKU-10247,27.0,22,25.58,2023-09-25,Ghana Imports Ltd
+STR002,Kumasi Main,Broom,Household,SKU-17439,21.0,15,13.01,2023-09-01,West Africa Distributors
+STR002,Kumasi Main,Plastic Basin,Household,SKU-76209,102.0,12,27.76,2023-10-20,Delta Traders
+STR002,Kumasi Main,Storage Box,Household,SKU-90855,21.0,26,16.08,2023-12-03,Ghana Imports Ltd
+STR002,Kumasi Main,Air Freshener,Household,SKU-10546,111.0,22,10.32,2023-10-17,Delta Traders
+STR002,Kumasi Main,Candles Pack,Household,SKU-32440,17.0,20,16.2,2023-12-25,West Africa Distributors
+STR002,Kumasi Main,Mosquito Net,Household,SKU-13587,156.0,13,24.55,2023-11-25,Kumasi Supplies GH
+STR002,Kumasi Main,Body Lotion 400ml,Health & Beauty,SKU-80406,180.0,20,20.61,2023-09-23,Accra Wholesale Co
+STR002,Kumasi Main,Shampoo 300ml,Health & Beauty,SKU-56850,29.0,30,7.91,2023-11-27,West Africa Distributors
+STR002,Kumasi Main,Toothpaste 100g,Health & Beauty,SKU-60678,155.0,18,7.57,2023-11-04,Ghana Imports Ltd
+STR002,Kumasi Main,Hand Sanitizer 250ml,Health & Beauty,SKU-33015,55.0,26,11.74,2023-10-17,Delta Traders
+STR002,Kumasi Main,Painkillers 20s,Health & Beauty,SKU-29009,72.0,15,21.7,2023-10-23,Ghana Imports Ltd
+STR002,Kumasi Main,Sunscreen SPF30,Health & Beauty,SKU-58948,181.0,10,32.59,2023-09-14,Ghana Imports Ltd
+STR002,Kumasi Main,Baby Powder,Health & Beauty,SKU-33370,129.0,30,7.3,2023-10-09,Delta Traders
+STR002,Kumasi Main,Lip Balm,Health & Beauty,SKU-41654,133.0,22,35.07,2023-10-22,West Africa Distributors
+STR002,Kumasi Main,Face Wash,Health & Beauty,SKU-91218,37.0,24,20.44,2023-09-24,Kumasi Supplies GH
+STR002,Kumasi Main,Deodorant,Health & Beauty,SKU-59159,155.0,13,17.53,2023-12-26,West Africa Distributors
+STR003,Takoradi Market,Smart TV 43in,Electronics,SKU-72463,80.0,16,390.93,2023-12-11,Ghana Imports Ltd
+STR003,Takoradi Market,Bluetooth Speaker,Electronics,SKU-12532,0.0,13,320.16,2023-09-13,Delta Traders
+STR003,Takoradi Market,Wireless Earbuds,Electronics,SKU-61207,26.0,21,190.8,2023-10-22,Accra Wholesale Co
+STR003,Takoradi Market,Phone Charger,Electronics,SKU-19263,183.0,10,177.7,2023-12-03,West Africa Distributors
+STR003,Takoradi Market,Power Bank,Electronics,SKU-87103,122.0,12,232.97,2023-11-20,Accra Wholesale Co
+STR003,Takoradi Market,Extension Cable,Electronics,SKU-64201,63.0,18,30.04,2023-09-21,Kumasi Supplies GH
+STR003,Takoradi Market,LED Desk Lamp,Electronics,SKU-79230,0.0,24,257.49,2023-10-31,West Africa Distributors
+STR003,Takoradi Market,Webcam HD,Electronics,SKU-34743,187.0,16,432.57,2023-11-23,Kumasi Supplies GH
+STR003,Takoradi Market,USB Hub,Electronics,SKU-21120,77.0,11,398.57,2023-11-09,Accra Wholesale Co
+STR003,Takoradi Market,Portable Fan,Electronics,SKU-52395,86.0,15,64.35,2023-12-11,Ghana Imports Ltd
+STR003,Takoradi Market,Rice 25kg,Grocery,SKU-56456,178.0,11,2.17,2023-12-22,Ghana Imports Ltd
+STR003,Takoradi Market,Cooking Oil 5L,Grocery,SKU-34939,193.0,29,2.13,2023-12-01,Accra Wholesale Co
+STR003,Takoradi Market,Tomato Paste 400g,Grocery,SKU-75200,35.0,21,8.93,2023-10-06,West Africa Distributors
+STR003,Takoradi Market,Sugar 2kg,Grocery,SKU-38564,190.0,27,9.07,2023-11-15,Accra Wholesale Co
+STR003,Takoradi Market,Flour 1kg,Grocery,SKU-98800,192.0,17,14.1,2023-11-14,Accra Wholesale Co
+STR003,Takoradi Market,Milk Powder 400g,Grocery,SKU-32943,141.0,15,7.28,2023-12-11,Kumasi Supplies GH
+STR003,Takoradi Market,Sardines 125g,Grocery,SKU-45263,160.0,15,18.27,2023-12-09,Kumasi Supplies GH
+STR003,Takoradi Market,Oats 500g,Grocery,SKU-39622,188.0,11,14.88,2023-10-06,Accra Wholesale Co
+STR003,Takoradi Market,Biscuits Pack,Grocery,SKU-12184,197.0,30,10.69,2023-09-30,Delta Traders
+STR003,Takoradi Market,Cornflakes 500g,Grocery,SKU-49674,18.0,12,17.09,2023-12-02,Delta Traders
+STR003,Takoradi Market,Men T-Shirt,Clothing,SKU-65643,166.0,16,50.29,2023-10-11,Kumasi Supplies GH
+STR003,Takoradi Market,Women Blouse,Clothing,SKU-83223,120.0,30,58.93,2023-09-01,West Africa Distributors
+STR003,Takoradi Market,Children Shorts,Clothing,SKU-16699,198.0,19,10.32,2023-11-12,Delta Traders
+STR003,Takoradi Market,School Uniform,Clothing,SKU-49812,102.0,16,51.4,2023-12-10,Kumasi Supplies GH
+STR003,Takoradi Market,Men Trousers,Clothing,SKU-79148,106.0,14,44.26,2023-12-08,Delta Traders
+STR003,Takoradi Market,Women Dress,Clothing,SKU-60615,148.0,21,73.53,2023-09-10,West Africa Distributors
+STR003,Takoradi Market,Sneakers Size 40,Clothing,SKU-52607,43.0,15,60.28,2023-12-25,West Africa Distributors
+STR003,Takoradi Market,Sandals,Clothing,SKU-18471,48.0,11,32.83,2023-12-05,Ghana Imports Ltd
+STR003,Takoradi Market,Baseball Cap,Clothing,SKU-12931,105.0,16,33.8,2023-11-24,Ghana Imports Ltd
+STR003,Takoradi Market,Socks Pack 3,Clothing,SKU-38385,79.0,20,11.66,2023-09-14,Kumasi Supplies GH
+STR003,Takoradi Market,Mop & Bucket Set,Household,SKU-13811,187.0,29,11.81,2023-09-02,Ghana Imports Ltd
+STR003,Takoradi Market,Washing Powder 1kg,Household,SKU-94133,127.0,14,12.7,2023-09-19,Accra Wholesale Co
+STR003,Takoradi Market,Toilet Cleaner,Household,SKU-57360,128.0,24,19.33,2023-12-21,Accra Wholesale Co
+STR003,Takoradi Market,Dish Soap 750ml,Household,SKU-88777,44.0,16,37.65,2023-11-21,Delta Traders
+STR003,Takoradi Market,Broom,Household,SKU-70674,134.0,29,5.92,2023-11-23,West Africa Distributors
+STR003,Takoradi Market,Plastic Basin,Household,SKU-43665,191.0,20,29.4,2023-12-22,Ghana Imports Ltd
+STR003,Takoradi Market,Storage Box,Household,SKU-14024,191.0,20,5.54,2023-11-14,Kumasi Supplies GH
+STR003,Takoradi Market,Air Freshener,Household,SKU-30964,22.0,19,37.95,2023-11-17,Ghana Imports Ltd
+STR003,Takoradi Market,Candles Pack,Household,SKU-74401,128.0,22,38.21,2023-09-21,Kumasi Supplies GH
+STR003,Takoradi Market,Mosquito Net,Household,SKU-42692,148.0,18,31.66,2023-11-26,Accra Wholesale Co
+STR003,Takoradi Market,Body Lotion 400ml,Health & Beauty,SKU-54041,130.0,10,29.51,2023-10-02,Delta Traders
+STR003,Takoradi Market,Shampoo 300ml,Health & Beauty,SKU-40214,173.0,11,34.13,2023-12-27,Ghana Imports Ltd
+STR003,Takoradi Market,Toothpaste 100g,Health & Beauty,SKU-61182,180.0,18,19.0,2023-09-04,Ghana Imports Ltd
+STR003,Takoradi Market,Hand Sanitizer 250ml,Health & Beauty,SKU-12740,108.0,12,6.72,2023-10-25,Kumasi Supplies GH
+STR003,Takoradi Market,Painkillers 20s,Health & Beauty,SKU-15599,47.0,12,23.72,2023-10-07,Ghana Imports Ltd
+STR003,Takoradi Market,Sunscreen SPF30,Health & Beauty,SKU-98264,5.0,18,9.23,2023-09-25,Kumasi Supplies GH
+STR003,Takoradi Market,Baby Powder,Health & Beauty,SKU-30999,78.0,19,10.78,2023-09-17,Kumasi Supplies GH
+STR003,Takoradi Market,Lip Balm,Health & Beauty,SKU-51925,5.0,19,14.32,2023-12-17,Ghana Imports Ltd
+STR003,Takoradi Market,Face Wash,Health & Beauty,SKU-37645,51.0,13,2.6,2023-10-01,West Africa Distributors
+STR003,Takoradi Market,Deodorant,Health & Beauty,SKU-42839,77.0,14,34.41,2023-09-07,Accra Wholesale Co
+STR004,Tema Hub,Smart TV 43in,Electronics,SKU-25900,59.0,29,386.06,2023-10-16,Kumasi Supplies GH
+STR004,Tema Hub,Bluetooth Speaker,Electronics,SKU-52361,96.0,12,93.61,2023-11-30,Delta Traders
+STR004,Tema Hub,Wireless Earbuds,Electronics,SKU-13288,125.0,23,503.01,2023-10-31,West Africa Distributors
+STR004,Tema Hub,Phone Charger,Electronics,SKU-86714,122.0,24,481.13,2023-11-24,Accra Wholesale Co
+STR004,Tema Hub,Power Bank,Electronics,SKU-95400,146.0,17,344.82,2023-11-18,Accra Wholesale Co
+STR004,Tema Hub,Extension Cable,Electronics,SKU-50179,57.0,11,46.77,2023-10-06,Delta Traders
+STR004,Tema Hub,LED Desk Lamp,Electronics,SKU-81460,128.0,23,158.22,2023-12-28,Kumasi Supplies GH
+STR004,Tema Hub,Webcam HD,Electronics,SKU-10974,29.0,27,461.88,2023-11-11,Delta Traders
+STR004,Tema Hub,USB Hub,Electronics,SKU-24442,186.0,11,371.65,2023-10-02,Kumasi Supplies GH
+STR004,Tema Hub,Portable Fan,Electronics,SKU-44346,158.0,16,449.51,2023-12-26,Delta Traders
+STR004,Tema Hub,Rice 25kg,Grocery,SKU-94703,100.0,14,18.0,2023-09-05,West Africa Distributors
+STR004,Tema Hub,Cooking Oil 5L,Grocery,SKU-11769,196.0,17,22.87,2023-11-14,Ghana Imports Ltd
+STR004,Tema Hub,Tomato Paste 400g,Grocery,SKU-35159,7.0,23,18.95,2023-09-30,Kumasi Supplies GH
+STR004,Tema Hub,Sugar 2kg,Grocery,SKU-95610,0.0,11,24.64,2023-12-04,Ghana Imports Ltd
+STR004,Tema Hub,Flour 1kg,Grocery,SKU-16424,143.0,18,21.34,2023-09-24,West Africa Distributors
+STR004,Tema Hub,Milk Powder 400g,Grocery,SKU-78553,184.0,20,10.86,2023-12-06,West Africa Distributors
+STR004,Tema Hub,Sardines 125g,Grocery,SKU-62952,9.0,24,8.5,2023-12-07,Kumasi Supplies GH
+STR004,Tema Hub,Oats 500g,Grocery,SKU-15962,134.0,27,19.57,2023-12-12,Accra Wholesale Co
+STR004,Tema Hub,Biscuits Pack,Grocery,SKU-38464,195.0,11,26.66,2023-12-04,Accra Wholesale Co
+STR004,Tema Hub,Cornflakes 500g,Grocery,SKU-66269,0.0,18,19.07,2023-09-03,Ghana Imports Ltd
+STR004,Tema Hub,Men T-Shirt,Clothing,SKU-74088,75.0,22,77.13,2023-09-14,Kumasi Supplies GH
+STR004,Tema Hub,Women Blouse,Clothing,SKU-99816,0.0,18,46.5,2023-09-13,West Africa Distributors
+STR004,Tema Hub,Children Shorts,Clothing,SKU-41296,20.0,26,47.49,2023-10-24,Accra Wholesale Co
+STR004,Tema Hub,School Uniform,Clothing,SKU-77179,74.0,19,75.27,2023-12-15,West Africa Distributors
+STR004,Tema Hub,Men Trousers,Clothing,SKU-77099,21.0,13,48.24,2023-12-13,Delta Traders
+STR004,Tema Hub,Women Dress,Clothing,SKU-89986,59.0,17,41.44,2023-09-21,Ghana Imports Ltd
+STR004,Tema Hub,Sneakers Size 40,Clothing,SKU-74299,57.0,10,57.09,2023-10-30,West Africa Distributors
+STR004,Tema Hub,Sandals,Clothing,SKU-34328,197.0,26,67.11,2023-11-12,West Africa Distributors
+STR004,Tema Hub,Baseball Cap,Clothing,SKU-24307,15.0,16,50.81,2023-11-21,Accra Wholesale Co
+STR004,Tema Hub,Socks Pack 3,Clothing,SKU-68339,118.0,24,44.86,2023-11-19,Kumasi Supplies GH
+STR004,Tema Hub,Mop & Bucket Set,Household,SKU-91413,119.0,10,35.99,2023-10-07,Accra Wholesale Co
+STR004,Tema Hub,Washing Powder 1kg,Household,SKU-47166,196.0,19,5.09,2023-10-02,Ghana Imports Ltd
+STR004,Tema Hub,Toilet Cleaner,Household,SKU-11332,176.0,22,34.91,2023-12-14,Delta Traders
+STR004,Tema Hub,Dish Soap 750ml,Household,SKU-90890,94.0,29,33.84,2023-09-11,Ghana Imports Ltd
+STR004,Tema Hub,Broom,Household,SKU-93014,194.0,24,12.46,2023-10-05,Accra Wholesale Co
+STR004,Tema Hub,Plastic Basin,Household,SKU-72355,174.0,25,16.74,2023-10-08,West Africa Distributors
+STR004,Tema Hub,Storage Box,Household,SKU-10358,23.0,30,11.04,2023-11-25,Ghana Imports Ltd
+STR004,Tema Hub,Air Freshener,Household,SKU-25574,27.0,30,5.64,2023-09-09,Ghana Imports Ltd
+STR004,Tema Hub,Candles Pack,Household,SKU-48140,0.0,10,28.03,2023-11-02,Kumasi Supplies GH
+STR004,Tema Hub,Mosquito Net,Household,SKU-24168,200.0,11,28.41,2023-10-17,Ghana Imports Ltd
+STR004,Tema Hub,Body Lotion 400ml,Health & Beauty,SKU-32574,41.0,30,35.0,2023-12-20,Kumasi Supplies GH
+STR004,Tema Hub,Shampoo 300ml,Health & Beauty,SKU-78751,191.0,21,24.14,2023-12-14,West Africa Distributors
+STR004,Tema Hub,Toothpaste 100g,Health & Beauty,SKU-30135,108.0,13,24.67,2023-09-16,West Africa Distributors
+STR004,Tema Hub,Hand Sanitizer 250ml,Health & Beauty,SKU-63002,183.0,29,24.61,2023-10-10,Accra Wholesale Co
+STR004,Tema Hub,Painkillers 20s,Health & Beauty,SKU-21313,136.0,18,16.06,2023-12-18,Accra Wholesale Co
+STR004,Tema Hub,Sunscreen SPF30,Health & Beauty,SKU-25557,81.0,27,16.91,2023-09-20,Accra Wholesale Co
+STR004,Tema Hub,Baby Powder,Health & Beauty,SKU-10385,15.0,27,26.35,2023-09-14,Delta Traders
+STR004,Tema Hub,Lip Balm,Health & Beauty,SKU-73968,79.0,11,21.68,2023-09-24,Accra Wholesale Co
+STR004,Tema Hub,Face Wash,Health & Beauty,SKU-52241,58.0,21,13.85,2023-11-05,Accra Wholesale Co
+STR004,Tema Hub,Deodorant,Health & Beauty,SKU-76722,160.0,20,34.04,2023-12-22,Delta Traders
+STR005,Tamale North,Smart TV 43in,Electronics,SKU-74718,0.0,25,40.72,2023-10-11,Kumasi Supplies GH
+STR005,Tamale North,Bluetooth Speaker,Electronics,SKU-32848,149.0,30,402.66,2023-12-15,Accra Wholesale Co
+STR005,Tamale North,Wireless Earbuds,Electronics,SKU-47807,75.0,14,215.12,2023-10-16,Kumasi Supplies GH
+STR005,Tamale North,Phone Charger,Electronics,SKU-86886,73.0,18,284.58,2023-11-12,Delta Traders
+STR005,Tamale North,Power Bank,Electronics,SKU-71735,72.0,11,154.2,2023-09-07,Kumasi Supplies GH
+STR005,Tamale North,Extension Cable,Electronics,SKU-91494,34.0,22,324.67,2023-10-09,Kumasi Supplies GH
+STR005,Tamale North,LED Desk Lamp,Electronics,SKU-95804,53.0,25,216.93,2023-10-30,Delta Traders
+STR005,Tamale North,Webcam HD,Electronics,SKU-89516,74.0,30,210.33,2023-12-12,Delta Traders
+STR005,Tamale North,USB Hub,Electronics,SKU-56566,65.0,10,77.88,2023-10-30,West Africa Distributors
+STR005,Tamale North,Portable Fan,Electronics,SKU-82049,187.0,16,158.42,2023-11-17,Ghana Imports Ltd
+STR005,Tamale North,Rice 25kg,Grocery,SKU-20623,157.0,17,21.03,2023-09-19,Ghana Imports Ltd
+STR005,Tamale North,Cooking Oil 5L,Grocery,SKU-94899,34.0,21,12.95,2023-11-25,Kumasi Supplies GH
+STR005,Tamale North,Tomato Paste 400g,Grocery,SKU-19553,100.0,11,9.26,2023-09-28,Ghana Imports Ltd
+STR005,Tamale North,Sugar 2kg,Grocery,SKU-51122,174.0,28,18.3,2023-10-09,Delta Traders
+STR005,Tamale North,Flour 1kg,Grocery,SKU-28111,68.0,14,14.69,2023-10-29,Accra Wholesale Co
+STR005,Tamale North,Milk Powder 400g,Grocery,SKU-28698,127.0,28,12.61,2023-12-26,Kumasi Supplies GH
+STR005,Tamale North,Sardines 125g,Grocery,SKU-65229,78.0,29,20.27,2023-11-29,Delta Traders
+STR005,Tamale North,Oats 500g,Grocery,SKU-76053,129.0,13,10.73,2023-09-23,Accra Wholesale Co
+STR005,Tamale North,Biscuits Pack,Grocery,SKU-77444,73.0,14,20.26,2023-10-27,Accra Wholesale Co
+STR005,Tamale North,Cornflakes 500g,Grocery,SKU-79958,174.0,18,5.05,2023-12-25,Accra Wholesale Co
+STR005,Tamale North,Men T-Shirt,Clothing,SKU-13193,170.0,14,50.74,2023-10-31,Kumasi Supplies GH
+STR005,Tamale North,Women Blouse,Clothing,SKU-30091,181.0,10,37.73,2023-12-08,West Africa Distributors
+STR005,Tamale North,Children Shorts,Clothing,SKU-62573,169.0,21,59.5,2023-09-13,Delta Traders
+STR005,Tamale North,School Uniform,Clothing,SKU-34501,31.0,10,35.63,2023-10-15,Accra Wholesale Co
+STR005,Tamale North,Men Trousers,Clothing,SKU-77443,9.0,25,46.12,2023-12-09,West Africa Distributors
+STR005,Tamale North,Women Dress,Clothing,SKU-84164,134.0,14,49.92,2023-10-27,Kumasi Supplies GH
+STR005,Tamale North,Sneakers Size 40,Clothing,SKU-68417,159.0,16,64.01,2023-10-11,Accra Wholesale Co
+STR005,Tamale North,Sandals,Clothing,SKU-60042,116.0,16,65.74,2023-12-03,Kumasi Supplies GH
+STR005,Tamale North,Baseball Cap,Clothing,SKU-66168,107.0,28,45.31,2023-09-24,West Africa Distributors
+STR005,Tamale North,Socks Pack 3,Clothing,SKU-46589,0.0,22,18.05,2023-09-01,Accra Wholesale Co
+STR005,Tamale North,Mop & Bucket Set,Household,SKU-23447,160.0,30,5.42,2023-10-03,Delta Traders
+STR005,Tamale North,Washing Powder 1kg,Household,SKU-87698,87.0,16,29.08,2023-12-21,West Africa Distributors
+STR005,Tamale North,Toilet Cleaner,Household,SKU-80505,28.0,10,38.4,2023-10-16,Delta Traders
+STR005,Tamale North,Dish Soap 750ml,Household,SKU-78536,142.0,24,25.18,2023-09-29,Delta Traders
+STR005,Tamale North,Broom,Household,SKU-79047,159.0,16,41.78,2023-12-17,Kumasi Supplies GH
+STR005,Tamale North,Plastic Basin,Household,SKU-35177,26.0,14,36.32,2023-11-18,West Africa Distributors
+STR005,Tamale North,Storage Box,Household,SKU-43242,132.0,20,39.93,2023-09-07,Kumasi Supplies GH
+STR005,Tamale North,Air Freshener,Household,SKU-52246,155.0,30,29.21,2023-12-16,Accra Wholesale Co
+STR005,Tamale North,Candles Pack,Household,SKU-17791,0.0,29,19.02,2023-09-08,Accra Wholesale Co
+STR005,Tamale North,Mosquito Net,Household,SKU-82503,122.0,12,3.84,2023-12-21,Ghana Imports Ltd
+STR005,Tamale North,Body Lotion 400ml,Health & Beauty,SKU-78030,71.0,21,19.73,2023-09-24,West Africa Distributors
+STR005,Tamale North,Shampoo 300ml,Health & Beauty,SKU-97242,33.0,17,21.33,2023-09-27,West Africa Distributors
+STR005,Tamale North,Toothpaste 100g,Health & Beauty,SKU-18079,159.0,26,29.4,2023-12-02,Ghana Imports Ltd
+STR005,Tamale North,Hand Sanitizer 250ml,Health & Beauty,SKU-25621,158.0,10,17.64,2023-09-26,Ghana Imports Ltd
+STR005,Tamale North,Painkillers 20s,Health & Beauty,SKU-67270,137.0,11,29.68,2023-12-11,Ghana Imports Ltd
+STR005,Tamale North,Sunscreen SPF30,Health & Beauty,SKU-87595,17.0,24,31.92,2023-10-14,West Africa Distributors
+STR005,Tamale North,Baby Powder,Health & Beauty,SKU-90865,6.0,11,6.29,2023-10-27,West Africa Distributors
+STR005,Tamale North,Lip Balm,Health & Beauty,SKU-69430,83.0,20,19.5,2023-11-27,Delta Traders
+STR005,Tamale North,Face Wash,Health & Beauty,SKU-43518,77.0,20,13.57,2023-09-06,Kumasi Supplies GH
+STR005,Tamale North,Deodorant,Health & Beauty,SKU-66489,105.0,29,8.1,2023-10-08,Kumasi Supplies GH

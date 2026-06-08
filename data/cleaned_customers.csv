@@ -1,0 +1,501 @@
+customer_id,first_name,last_name,age,gender,city,email,phone,occupation,loyalty_tier,date_joined,total_spend_ghs,customer_name
+CUS0001,Adwoa,Frimpong,39.0,Other,Accra,customer1@mail.com,243815529.0,Farmer,Bronze,2021-11-15,603.45,Adwoa Frimpong
+CUS0002,Kojo,Tetteh,20.0,,Tema,customer2@mail.com,247314811.0,Driver,Bronze,2021-05-14,4467.59,Kojo Tetteh
+CUS0003,Esi,Kyei,22.0,Other,Tamale,customer3@mail.com,247465311.0,Engineer,Gold,2022-10-07,2329.06,Esi Kyei
+CUS0004,Abena,Quaye,32.0,Other,Tamale,customer4@mail.com,244496308.0,Teacher,Gold,2021-01-20,2910.02,Abena Quaye
+CUS0005,Yoofi,Quaye,50.0,Other,Tema,customer5@mail.com,,Engineer,Bronze,2022-01-13,1507.59,Yoofi Quaye
+CUS0006,Adwoa,Kyei,27.0,F,Tamale,customer6@mail.com,249534067.0,Tailor,Bronze,2021-02-22,3375.08,Adwoa Kyei
+CUS0007,Abena,Amoah,63.0,,Tema,customer7@mail.com,241802238.0,Student,Silver,2021-09-08,3779.98,Abena Amoah
+CUS0008,Afua,Antwi,46.0,Other,Kumasi,customer8@mail.com,247583602.0,Student,Bronze,2021-11-05,1443.57,Afua Antwi
+CUS0009,Yoofi,Adjei,20.0,M,Kumasi,customer9@mail.com,249429467.0,Farmer,Silver,2022-06-06,2664.08,Yoofi Adjei
+CUS0010,Ama,Darko,30.0,,Tema,customer10@mail.com,245720983.0,Teacher,Gold,2022-04-02,3930.93,Ama Darko
+CUS0011,Kweku,Quaye,19.0,M,Accra,customer11@mail.com,248905164.0,Engineer,Silver,2022-05-07,3507.45,Kweku Quaye
+CUS0012,Kofi,Osei,21.0,Other,Takoradi,,249493308.0,Trader,Silver,2022-09-29,3364.65,Kofi Osei
+CUS0013,Maame,Antwi,64.0,F,Kumasi,customer13@mail.com,243183280.0,Civil Servant,Bronze,2021-09-27,4428.15,Maame Antwi
+CUS0014,Adwoa,Quaye,58.0,F,Accra,customer14@mail.com,245119055.0,Driver,Bronze,2022-12-01,4453.72,Adwoa Quaye
+CUS0015,Kwabena,Acheampong,60.0,F,Accra,,246339878.0,Chef,Silver,2022-01-06,3382.5,Kwabena Acheampong
+CUS0016,Kweku,Appiah,46.0,F,Tamale,,247851188.0,Chef,Bronze,2021-10-11,3026.74,Kweku Appiah
+CUS0017,Akosua,Agyei,35.0,M,Takoradi,customer17@mail.com,247188445.0,Civil Servant,Gold,2022-04-18,4401.88,Akosua Agyei
+CUS0018,Akua,Osei,55.0,F,Kumasi,customer18@mail.com,,Trader,Bronze,2022-01-19,3184.45,Akua Osei
+CUS0019,Adwoa,Appiah,49.0,Other,Kumasi,,242125505.0,Driver,Bronze,2022-03-09,1627.76,Adwoa Appiah
+CUS0020,Yoofi,Kyei,31.0,F,Kumasi,,242514792.0,Driver,Bronze,2021-04-01,3312.88,Yoofi Kyei
+CUS0021,Kweku,Agyei,43.0,F,Tamale,customer21@mail.com,242729925.0,Teacher,Silver,2021-12-14,3938.24,Kweku Agyei
+CUS0022,Ebo,Owusu,28.0,Other,Tema,customer22@mail.com,249336608.0,Student,Gold,2021-08-20,475.03,Ebo Owusu
+CUS0023,Efua,Mensah,23.0,F,Kumasi,customer23@mail.com,248019723.0,Farmer,Bronze,2021-07-28,3675.48,Efua Mensah
+CUS0024,Kwame,Appiah,40.0,F,Takoradi,customer24@mail.com,241971163.0,Tailor,Bronze,2021-08-04,1400.97,Kwame Appiah
+CUS0025,Maame,Adjei,61.0,F,Tema,customer25@mail.com,243983232.0,Engineer,Bronze,2021-03-19,964.63,Maame Adjei
+CUS0026,Araba,Owusu,24.0,M,Accra,customer26@mail.com,249940066.0,Nurse,Gold,2022-08-25,3904.36,Araba Owusu
+CUS0027,Yaw,Kyei,30.0,F,Tamale,customer27@mail.com,248773056.0,Engineer,Bronze,2021-09-23,3789.85,Yaw Kyei
+CUS0028,Abena,Appiah,65.0,M,Accra,customer28@mail.com,245961407.0,Civil Servant,Bronze,2021-04-15,925.06,Abena Appiah
+CUS0029,Kofi,Owusu,23.0,M,Kumasi,customer29@mail.com,246155837.0,Driver,Bronze,2021-12-07,2051.52,Kofi Owusu
+CUS0030,Nana,Adjei,52.0,M,Takoradi,,247824589.0,Civil Servant,Silver,2021-04-01,3384.44,Nana Adjei
+CUS0031,Yaw,Boateng,37.0,M,Takoradi,customer31@mail.com,247995697.0,Driver,Silver,2021-11-30,415.05,Yaw Boateng
+CUS0032,Akosua,Acheampong,57.0,F,Accra,customer32@mail.com,249832135.0,Trader,Silver,2021-04-16,3005.48,Akosua Acheampong
+CUS0033,Esi,Agyei,26.0,F,Tema,customer33@mail.com,247746260.0,Trader,Silver,2021-05-07,3530.63,Esi Agyei
+CUS0034,Efua,Osei,57.0,F,Accra,,,Tailor,Silver,2022-08-06,669.23,Efua Osei
+CUS0035,Abena,Quaye,58.0,F,Kumasi,customer35@mail.com,241782262.0,Student,Gold,2022-10-11,2536.91,Abena Quaye
+CUS0036,Fiifi,Quaye,57.0,M,Tamale,customer36@mail.com,245953331.0,Farmer,Silver,2022-05-21,4059.31,Fiifi Quaye
+CUS0037,Esi,Acheampong,43.0,Other,Accra,customer37@mail.com,241481169.0,Trader,Silver,2021-12-06,1216.56,Esi Acheampong
+CUS0038,Afua,Acheampong,44.0,F,Accra,customer38@mail.com,241390804.0,Driver,Bronze,2022-01-03,2873.81,Afua Acheampong
+CUS0039,Adwoa,Amoah,64.0,Other,Takoradi,customer39@mail.com,246946166.0,Civil Servant,Silver,2022-08-22,1031.48,Adwoa Amoah
+CUS0040,Ebo,Antwi,53.0,F,Accra,customer40@mail.com,241880247.0,Civil Servant,Silver,2022-05-19,619.5,Ebo Antwi
+CUS0041,Kwame,Amoah,26.0,M,Takoradi,,245648869.0,Student,Bronze,2022-08-29,3403.81,Kwame Amoah
+CUS0042,Maame,Boateng,57.0,M,Tamale,,246413204.0,Engineer,Bronze,2021-01-16,799.77,Maame Boateng
+CUS0043,Kwame,Osei,63.0,M,Takoradi,,248390359.0,Trader,Bronze,2022-08-07,1115.19,Kwame Osei
+CUS0044,Kofi,Tetteh,40.0,M,Tema,customer44@mail.com,245292408.0,Chef,Bronze,2021-04-06,1847.85,Kofi Tetteh
+CUS0045,Akosua,Agyei,58.0,M,Takoradi,customer45@mail.com,249972390.0,Trader,Silver,2022-06-26,2388.64,Akosua Agyei
+CUS0046,Esi,Amoah,28.0,F,Kumasi,customer46@mail.com,,Chef,Bronze,2022-07-04,1575.67,Esi Amoah
+CUS0047,Yoofi,Mensah,52.0,Other,Takoradi,customer47@mail.com,244671037.0,Student,Gold,2021-11-02,3316.59,Yoofi Mensah
+CUS0048,Kojo,Adjei,54.0,F,Tema,customer48@mail.com,246781645.0,Farmer,Bronze,2021-11-30,2846.86,Kojo Adjei
+CUS0049,Afua,Osei,50.0,F,Takoradi,customer49@mail.com,247472175.0,Trader,Bronze,2022-12-18,2024.74,Afua Osei
+CUS0050,Yoofi,Antwi,25.0,F,Takoradi,customer50@mail.com,246965855.0,Farmer,Bronze,2022-10-30,3465.39,Yoofi Antwi
+CUS0051,Akosua,Quaye,59.0,Other,Kumasi,customer51@mail.com,241133148.0,Teacher,Bronze,2022-03-23,4301.59,Akosua Quaye
+CUS0052,Akosua,Amoah,40.0,F,Takoradi,customer52@mail.com,243604390.0,Trader,Gold,2022-06-01,693.4,Akosua Amoah
+CUS0053,Kwabena,Frimpong,51.0,Other,Tamale,customer53@mail.com,,Chef,Gold,2021-10-15,1989.73,Kwabena Frimpong
+CUS0054,Esi,Asante,62.0,F,Kumasi,customer54@mail.com,241084021.0,Nurse,Gold,2021-02-20,3923.58,Esi Asante
+CUS0055,Akosua,Acheampong,46.0,,Accra,customer55@mail.com,246474338.0,Driver,Gold,2021-09-05,1904.89,Akosua Acheampong
+CUS0056,Akosua,Asante,19.0,Other,Tema,customer56@mail.com,247759550.0,Trader,Bronze,2021-12-20,655.35,Akosua Asante
+CUS0057,Kweku,Owusu,58.0,M,Tamale,customer57@mail.com,246855653.0,Civil Servant,Bronze,2021-12-07,3338.04,Kweku Owusu
+CUS0058,Akua,Adjei,61.0,F,Tamale,,241329004.0,Student,Bronze,2021-06-07,1563.82,Akua Adjei
+CUS0059,Akosua,Frimpong,38.0,F,Tamale,customer59@mail.com,249014350.0,Chef,Gold,2022-07-17,1334.14,Akosua Frimpong
+CUS0060,Ama,Appiah,43.0,F,Tamale,customer60@mail.com,242678642.0,Tailor,Bronze,2021-01-03,337.8,Ama Appiah
+CUS0061,Adwoa,Kyei,48.0,M,Tamale,customer61@mail.com,246688369.0,Engineer,Silver,2022-01-19,496.38,Adwoa Kyei
+CUS0062,Kojo,Tetteh,35.0,,Takoradi,customer62@mail.com,248287570.0,Farmer,Bronze,2022-09-27,3521.59,Kojo Tetteh
+CUS0063,Kweku,Osei,55.0,F,Takoradi,customer63@mail.com,248246236.0,Chef,Bronze,2021-02-07,2974.73,Kweku Osei
+CUS0064,Abena,Mensah,24.0,M,Tamale,customer64@mail.com,241902080.0,Student,Bronze,2021-12-11,4262.41,Abena Mensah
+CUS0065,Efua,Adjei,62.0,,Accra,customer65@mail.com,241800922.0,Nurse,Bronze,2021-09-04,4276.37,Efua Adjei
+CUS0066,Kweku,Osei,59.0,F,Takoradi,customer66@mail.com,249116089.0,Trader,Silver,2021-09-16,1618.17,Kweku Osei
+CUS0067,Kojo,Tetteh,41.0,,Takoradi,customer67@mail.com,249958483.0,Farmer,Silver,2022-04-25,1714.71,Kojo Tetteh
+CUS0068,Abena,Adjei,31.0,F,Tamale,customer68@mail.com,,Tailor,Gold,2022-09-27,2212.63,Abena Adjei
+CUS0069,Kwame,Antwi,56.0,M,Tamale,customer69@mail.com,245403875.0,Nurse,Silver,2021-11-05,1876.92,Kwame Antwi
+CUS0070,Ama,Quaye,33.0,Other,Tamale,,248458954.0,Nurse,Gold,2021-08-07,3296.42,Ama Quaye
+CUS0071,Kojo,Kyei,49.0,F,Takoradi,customer71@mail.com,241700282.0,Chef,Silver,2022-11-17,1014.55,Kojo Kyei
+CUS0072,Ama,Amoah,36.0,Other,Accra,customer72@mail.com,,Student,Gold,2022-01-17,2790.2,Ama Amoah
+CUS0073,Kofi,Acheampong,19.0,M,Tamale,customer73@mail.com,,Chef,Bronze,2022-11-06,3168.24,Kofi Acheampong
+CUS0074,Akosua,Agyei,29.0,F,Tamale,customer74@mail.com,244965307.0,Chef,Bronze,2022-06-26,1937.78,Akosua Agyei
+CUS0075,Nana,Appiah,43.0,F,Takoradi,customer75@mail.com,247837038.0,Teacher,Bronze,2022-11-25,307.18,Nana Appiah
+CUS0076,Efua,Darko,26.0,F,Kumasi,customer76@mail.com,242248403.0,Driver,Silver,2021-05-17,259.72,Efua Darko
+CUS0077,Kwabena,Darko,47.0,F,Takoradi,customer77@mail.com,247946545.0,Student,Bronze,2021-11-14,4280.59,Kwabena Darko
+CUS0078,Ama,Asante,35.0,F,Takoradi,customer78@mail.com,248330853.0,Farmer,Bronze,2022-06-17,3671.23,Ama Asante
+CUS0079,Nana,Darko,42.0,,Tamale,customer79@mail.com,242146043.0,Trader,Bronze,2021-01-26,3894.73,Nana Darko
+CUS0080,Abena,Agyei,51.0,M,Accra,customer80@mail.com,243791582.0,Farmer,Silver,2022-02-04,3632.71,Abena Agyei
+CUS0081,Araba,Agyei,23.0,M,Tema,customer81@mail.com,246343093.0,Student,Gold,2021-04-21,2849.84,Araba Agyei
+CUS0082,Ebo,Tetteh,35.0,F,Accra,customer82@mail.com,249930905.0,Farmer,Bronze,2022-01-22,1001.54,Ebo Tetteh
+CUS0083,Kofi,Amoah,46.0,F,Tamale,customer83@mail.com,248194732.0,Chef,Gold,2021-07-12,3522.44,Kofi Amoah
+CUS0084,Abena,Frimpong,52.0,F,Takoradi,customer84@mail.com,245090790.0,Engineer,Silver,2021-10-14,1490.21,Abena Frimpong
+CUS0085,Fiifi,Amoah,21.0,M,Kumasi,customer85@mail.com,,Student,Bronze,2021-04-10,4144.6,Fiifi Amoah
+CUS0086,Nana,Appiah,47.0,F,Tema,customer86@mail.com,247260863.0,Teacher,Bronze,2022-05-10,1923.75,Nana Appiah
+CUS0087,Kwame,Appiah,48.0,M,Tamale,customer87@mail.com,249659485.0,Civil Servant,Bronze,2022-12-07,269.5,Kwame Appiah
+CUS0088,Kofi,Darko,37.0,M,Tema,customer88@mail.com,246511424.0,Civil Servant,Gold,2021-04-16,2785.67,Kofi Darko
+CUS0089,Akosua,Asante,47.0,F,Tamale,customer89@mail.com,247491166.0,Driver,Bronze,2021-11-02,197.7,Akosua Asante
+CUS0090,Kweku,Agyei,54.0,F,Tamale,,241890539.0,Nurse,Bronze,2022-12-28,357.72,Kweku Agyei
+CUS0091,Fiifi,Agyei,41.0,,Accra,customer91@mail.com,243938555.0,Nurse,Gold,2022-07-27,4154.12,Fiifi Agyei
+CUS0092,Abena,Tetteh,22.0,Other,Accra,customer92@mail.com,242897194.0,Civil Servant,Bronze,2022-09-05,3320.62,Abena Tetteh
+CUS0093,Esi,Mensah,19.0,F,Kumasi,customer93@mail.com,247174975.0,Chef,Silver,2022-07-18,3414.22,Esi Mensah
+CUS0094,Afua,Darko,37.0,F,Accra,customer94@mail.com,246671905.0,Driver,Bronze,2021-07-16,2603.9,Afua Darko
+CUS0095,Yaw,Owusu,62.0,F,Kumasi,,245102758.0,Engineer,Bronze,2022-12-24,2592.54,Yaw Owusu
+CUS0096,Kojo,Tetteh,41.0,,Accra,customer96@mail.com,249270231.0,Nurse,Bronze,2022-06-10,3161.7,Kojo Tetteh
+CUS0097,Kofi,Kyei,30.0,M,Tema,customer97@mail.com,,Nurse,Bronze,2021-02-03,1177.5,Kofi Kyei
+CUS0098,Akosua,Osei,32.0,,Tema,customer98@mail.com,248307873.0,Teacher,Bronze,2022-10-12,1775.59,Akosua Osei
+CUS0099,Araba,Quaye,32.0,F,Accra,customer99@mail.com,248925877.0,Engineer,Bronze,2021-11-14,1063.03,Araba Quaye
+CUS0100,Afua,Tetteh,29.0,,Takoradi,customer100@mail.com,246709049.0,Nurse,Bronze,2021-09-28,1394.77,Afua Tetteh
+CUS0101,Afua,Amoah,35.0,F,Takoradi,customer101@mail.com,246719439.0,Driver,Silver,2022-07-01,2202.24,Afua Amoah
+CUS0102,Kweku,Appiah,47.0,F,Accra,customer102@mail.com,249122132.0,Tailor,Bronze,2022-09-01,1795.31,Kweku Appiah
+CUS0103,Nana,Tetteh,46.0,,Kumasi,customer103@mail.com,244524697.0,Driver,Bronze,2022-01-06,1553.45,Nana Tetteh
+CUS0104,Esi,Osei,61.0,Other,Tamale,,247993789.0,Teacher,Bronze,2021-01-26,1736.35,Esi Osei
+CUS0105,Nana,Owusu,55.0,M,Tema,customer105@mail.com,248991958.0,Teacher,Bronze,2022-09-04,3465.51,Nana Owusu
+CUS0106,Afua,Asante,46.0,F,Tamale,customer106@mail.com,247816044.0,Trader,Bronze,2022-03-28,1041.55,Afua Asante
+CUS0107,Afua,Owusu,47.0,F,Accra,customer107@mail.com,244999065.0,Farmer,Bronze,2022-08-27,628.57,Afua Owusu
+CUS0108,Kofi,Antwi,56.0,M,Takoradi,customer108@mail.com,244889433.0,Engineer,Silver,2022-03-06,4240.3,Kofi Antwi
+CUS0109,Kojo,Osei,33.0,M,Tema,customer109@mail.com,241461875.0,Civil Servant,Bronze,2021-02-23,4432.85,Kojo Osei
+CUS0110,Akosua,Adjei,34.0,F,Takoradi,customer110@mail.com,247573108.0,Farmer,Silver,2022-12-26,2714.6,Akosua Adjei
+CUS0111,Kofi,Asante,23.0,M,Takoradi,customer111@mail.com,246642710.0,Driver,Bronze,2021-05-20,2181.0,Kofi Asante
+CUS0112,Esi,Mensah,39.0,F,Takoradi,customer112@mail.com,243402037.0,Chef,Bronze,2021-09-09,1491.73,Esi Mensah
+CUS0113,Ama,Appiah,46.0,Other,Tamale,customer113@mail.com,248493210.0,Chef,Bronze,2022-02-25,171.99,Ama Appiah
+CUS0114,Abena,Frimpong,29.0,F,Tema,customer114@mail.com,,Nurse,Bronze,2021-02-13,4361.33,Abena Frimpong
+CUS0115,Araba,Agyei,38.0,,Tamale,customer115@mail.com,249120779.0,Trader,Bronze,2022-07-28,2261.93,Araba Agyei
+CUS0116,Kweku,Adjei,62.0,M,Tamale,customer116@mail.com,248950545.0,Tailor,Bronze,2021-03-20,1428.21,Kweku Adjei
+CUS0117,Yaw,Mensah,25.0,M,Takoradi,customer117@mail.com,241693359.0,Trader,Bronze,2022-03-14,2220.12,Yaw Mensah
+CUS0118,Abena,Frimpong,39.0,M,Accra,customer118@mail.com,249205709.0,Farmer,Gold,2022-12-03,1681.25,Abena Frimpong
+CUS0119,Kwabena,Agyei,35.0,F,Accra,customer119@mail.com,245514080.0,Civil Servant,Bronze,2021-03-10,635.66,Kwabena Agyei
+CUS0120,Yaw,Acheampong,47.0,,Takoradi,,241852295.0,Engineer,Silver,2021-11-24,1822.18,Yaw Acheampong
+CUS0121,Efua,Amoah,43.0,F,Tamale,customer121@mail.com,243378316.0,Engineer,Silver,2022-07-02,2521.49,Efua Amoah
+CUS0122,Akua,Osei,43.0,M,Kumasi,,249144106.0,Nurse,Gold,2022-07-02,3349.79,Akua Osei
+CUS0123,Ama,Boateng,52.0,F,Tamale,customer123@mail.com,249109893.0,Trader,Bronze,2021-12-17,2797.54,Ama Boateng
+CUS0124,Fiifi,Agyei,40.0,F,Kumasi,customer124@mail.com,243506425.0,Tailor,Bronze,2021-03-17,3795.91,Fiifi Agyei
+CUS0125,Maame,Frimpong,35.0,F,Takoradi,customer125@mail.com,247240352.0,Farmer,Bronze,2022-08-13,394.1,Maame Frimpong
+CUS0126,Yaw,Mensah,31.0,,Takoradi,customer126@mail.com,248708970.0,Driver,Silver,2022-09-11,3873.49,Yaw Mensah
+CUS0127,Kojo,Antwi,37.0,M,Takoradi,customer127@mail.com,249676026.0,Chef,Silver,2021-07-07,3134.3,Kojo Antwi
+CUS0128,Nana,Quaye,29.0,M,Takoradi,customer128@mail.com,246129073.0,Engineer,Silver,2021-11-04,3980.87,Nana Quaye
+CUS0129,Kwabena,Acheampong,37.0,F,Takoradi,customer129@mail.com,246157067.0,Engineer,Bronze,2022-09-30,3906.14,Kwabena Acheampong
+CUS0130,Kofi,Darko,59.0,M,Takoradi,customer130@mail.com,248900396.0,Tailor,Bronze,2021-02-14,4326.49,Kofi Darko
+CUS0131,Kwabena,Owusu,58.0,F,Tema,customer131@mail.com,247965894.0,Trader,Gold,2021-02-01,3961.47,Kwabena Owusu
+CUS0132,Kwabena,Agyei,43.0,F,Tema,customer132@mail.com,244874343.0,Teacher,Bronze,2022-01-27,3434.11,Kwabena Agyei
+CUS0133,Maame,Agyei,63.0,F,Accra,customer133@mail.com,244092823.0,Trader,Bronze,2021-10-02,1432.79,Maame Agyei
+CUS0134,Araba,Mensah,22.0,F,Tamale,customer134@mail.com,244737531.0,Engineer,Gold,2021-09-22,2768.15,Araba Mensah
+CUS0135,Yaw,Darko,65.0,F,Tamale,customer135@mail.com,247969901.0,Student,Bronze,2021-10-07,3597.76,Yaw Darko
+CUS0136,Yaw,Frimpong,23.0,M,Takoradi,customer136@mail.com,244964080.0,Civil Servant,Gold,2021-12-28,97.16,Yaw Frimpong
+CUS0137,Araba,Asante,64.0,M,Tema,customer137@mail.com,248604820.0,Civil Servant,Bronze,2021-07-27,3897.76,Araba Asante
+CUS0138,Yoofi,Darko,59.0,F,Takoradi,customer138@mail.com,241880761.0,Driver,Silver,2021-11-16,2903.77,Yoofi Darko
+CUS0139,Kofi,Antwi,25.0,F,Takoradi,customer139@mail.com,244768730.0,Tailor,Silver,2022-02-15,1410.71,Kofi Antwi
+CUS0140,Maame,Amoah,32.0,M,Takoradi,,248865324.0,Chef,Silver,2022-12-02,1039.82,Maame Amoah
+CUS0141,Esi,Boateng,47.0,F,Accra,customer141@mail.com,244899754.0,Driver,Gold,2021-07-22,1156.06,Esi Boateng
+CUS0142,Nana,Kyei,61.0,M,Kumasi,customer142@mail.com,248980134.0,Driver,Bronze,2021-08-02,2869.26,Nana Kyei
+CUS0143,Yaw,Asante,52.0,F,Accra,customer143@mail.com,242218410.0,Civil Servant,Bronze,2022-01-19,608.54,Yaw Asante
+CUS0144,Akua,Adjei,26.0,F,Tamale,,241908301.0,Tailor,Gold,2021-12-01,2871.52,Akua Adjei
+CUS0145,Kweku,Tetteh,62.0,F,Accra,customer145@mail.com,243621766.0,Farmer,Gold,2021-02-23,3858.54,Kweku Tetteh
+CUS0146,Kofi,Appiah,26.0,F,Tamale,customer146@mail.com,245185348.0,Farmer,Bronze,2021-11-25,1604.37,Kofi Appiah
+CUS0147,Akua,Appiah,65.0,,Takoradi,customer147@mail.com,243034681.0,Civil Servant,Bronze,2021-08-17,3599.06,Akua Appiah
+CUS0148,Ama,Antwi,29.0,Other,Kumasi,customer148@mail.com,242248786.0,Chef,Silver,2022-06-12,1672.84,Ama Antwi
+CUS0149,Ama,Quaye,63.0,F,Takoradi,customer149@mail.com,,Trader,Bronze,2022-03-19,1449.05,Ama Quaye
+CUS0150,Nana,Quaye,53.0,F,Takoradi,customer150@mail.com,244620051.0,Civil Servant,Bronze,2022-11-07,4112.42,Nana Quaye
+CUS0151,Kweku,Antwi,50.0,M,Kumasi,,249146884.0,Chef,Bronze,2021-02-13,2278.72,Kweku Antwi
+CUS0152,Akosua,Boateng,24.0,F,Tamale,customer152@mail.com,247838926.0,Chef,Bronze,2022-07-05,3199.36,Akosua Boateng
+CUS0153,Ebo,Antwi,64.0,M,Takoradi,customer153@mail.com,247405699.0,Farmer,Bronze,2021-12-27,3426.42,Ebo Antwi
+CUS0154,Kofi,Mensah,52.0,M,Tema,customer154@mail.com,241029823.0,Chef,Bronze,2021-06-14,3045.87,Kofi Mensah
+CUS0155,Efua,Adjei,36.0,M,Tema,customer155@mail.com,241482819.0,Chef,Silver,2022-04-04,271.24,Efua Adjei
+CUS0156,Kwabena,Adjei,43.0,M,Takoradi,customer156@mail.com,244429590.0,Civil Servant,Bronze,2022-09-11,4018.06,Kwabena Adjei
+CUS0157,Nana,Acheampong,34.0,Other,Tema,customer157@mail.com,246664429.0,Student,Bronze,2022-02-01,423.8,Nana Acheampong
+CUS0158,Kwabena,Adjei,37.0,F,Takoradi,customer158@mail.com,242499964.0,Chef,Bronze,2021-12-29,4126.67,Kwabena Adjei
+CUS0159,Ama,Asante,59.0,F,Tema,customer159@mail.com,244589117.0,Engineer,Bronze,2022-03-26,3180.6,Ama Asante
+CUS0160,Akosua,Appiah,48.0,,Accra,customer160@mail.com,243699257.0,Civil Servant,Bronze,2021-09-05,1701.74,Akosua Appiah
+CUS0161,Abena,Osei,53.0,M,Takoradi,customer161@mail.com,245866606.0,Farmer,Gold,2022-05-08,155.8,Abena Osei
+CUS0162,Esi,Asante,21.0,F,Tamale,customer162@mail.com,247735407.0,Student,Silver,2021-12-17,2365.91,Esi Asante
+CUS0163,Efua,Mensah,48.0,M,Kumasi,,241997220.0,Teacher,Bronze,2021-05-19,2632.17,Efua Mensah
+CUS0164,Kwabena,Darko,36.0,,Takoradi,customer164@mail.com,247925241.0,Farmer,Gold,2021-08-17,1889.24,Kwabena Darko
+CUS0165,Kwame,Acheampong,42.0,F,Kumasi,customer165@mail.com,246491289.0,Civil Servant,Bronze,2021-06-06,68.59,Kwame Acheampong
+CUS0166,Kweku,Asante,26.0,,Tema,customer166@mail.com,242712694.0,Trader,Gold,2021-09-13,400.72,Kweku Asante
+CUS0167,Esi,Frimpong,41.0,M,Takoradi,customer167@mail.com,247753616.0,Civil Servant,Bronze,2022-06-16,3207.89,Esi Frimpong
+CUS0168,Esi,Kyei,25.0,,Tamale,customer168@mail.com,,Chef,Bronze,2021-07-04,3608.48,Esi Kyei
+CUS0169,Kwabena,Tetteh,44.0,M,Takoradi,customer169@mail.com,241248523.0,Trader,Silver,2021-03-26,3606.64,Kwabena Tetteh
+CUS0170,Akosua,Amoah,34.0,F,Tema,customer170@mail.com,242288648.0,Driver,Gold,2022-12-12,234.91,Akosua Amoah
+CUS0171,Akosua,Boateng,22.0,F,Tamale,customer171@mail.com,247857925.0,Teacher,Bronze,2021-04-23,429.45,Akosua Boateng
+CUS0172,Kwame,Boateng,34.0,M,Takoradi,customer172@mail.com,247347912.0,Tailor,Silver,2022-04-11,4003.34,Kwame Boateng
+CUS0173,Efua,Kyei,64.0,M,Kumasi,customer173@mail.com,245712781.0,Nurse,Silver,2022-05-13,3412.5,Efua Kyei
+CUS0174,Fiifi,Boateng,51.0,F,Accra,customer174@mail.com,244883185.0,Trader,Gold,2021-04-17,2881.0,Fiifi Boateng
+CUS0175,Kofi,Adjei,46.0,M,Accra,customer175@mail.com,247482581.0,Student,Bronze,2022-08-25,1366.81,Kofi Adjei
+CUS0176,Kwame,Osei,50.0,F,Tema,,248949066.0,Trader,Silver,2022-04-15,2086.87,Kwame Osei
+CUS0177,Adwoa,Mensah,60.0,,Takoradi,,249812447.0,Student,Bronze,2022-04-29,2739.0,Adwoa Mensah
+CUS0178,Kwabena,Kyei,32.0,Other,Takoradi,customer178@mail.com,247464401.0,Teacher,Silver,2021-09-10,796.84,Kwabena Kyei
+CUS0179,Fiifi,Asante,46.0,Other,Kumasi,customer179@mail.com,241607430.0,Nurse,Bronze,2021-12-26,4484.21,Fiifi Asante
+CUS0180,Kwame,Frimpong,56.0,Other,Accra,customer180@mail.com,245842247.0,Teacher,Bronze,2022-02-20,1300.0,Kwame Frimpong
+CUS0181,Fiifi,Acheampong,36.0,M,Tamale,customer181@mail.com,242163271.0,Student,Bronze,2022-06-18,4046.91,Fiifi Acheampong
+CUS0182,Afua,Quaye,43.0,F,Tema,customer182@mail.com,244723259.0,Student,Gold,2022-02-20,2604.84,Afua Quaye
+CUS0183,Kofi,Quaye,37.0,F,Accra,customer183@mail.com,248098844.0,Teacher,Bronze,2022-09-02,1287.24,Kofi Quaye
+CUS0184,Akua,Adjei,19.0,Other,Tema,customer184@mail.com,244898389.0,Engineer,Silver,2021-06-24,2995.81,Akua Adjei
+CUS0185,Ebo,Frimpong,37.0,F,Tema,customer185@mail.com,241444826.0,Engineer,Silver,2022-11-11,1091.92,Ebo Frimpong
+CUS0186,Araba,Frimpong,33.0,Other,Takoradi,customer186@mail.com,247474609.0,Nurse,Silver,2021-01-02,2779.73,Araba Frimpong
+CUS0187,Efua,Kyei,59.0,M,Takoradi,customer187@mail.com,243554104.0,Engineer,Silver,2022-04-13,3662.45,Efua Kyei
+CUS0188,Kojo,Agyei,40.0,Other,Tamale,customer188@mail.com,242551704.0,Driver,Silver,2022-06-23,398.17,Kojo Agyei
+CUS0189,Yoofi,Acheampong,33.0,M,Tema,customer189@mail.com,,Farmer,Bronze,2021-10-08,2902.82,Yoofi Acheampong
+CUS0190,Kwame,Boateng,48.0,F,Accra,customer190@mail.com,244153748.0,Farmer,Gold,2021-08-23,1799.49,Kwame Boateng
+CUS0191,Kweku,Tetteh,43.0,M,Kumasi,customer191@mail.com,244981854.0,Driver,Silver,2021-08-02,638.83,Kweku Tetteh
+CUS0192,Araba,Agyei,62.0,M,Tamale,customer192@mail.com,241918727.0,Farmer,Bronze,2021-04-12,2814.06,Araba Agyei
+CUS0193,Akua,Boateng,29.0,M,Accra,,248115760.0,Nurse,Bronze,2022-02-03,363.34,Akua Boateng
+CUS0194,Adwoa,Owusu,55.0,F,Kumasi,customer194@mail.com,,Chef,Bronze,2022-04-16,672.7,Adwoa Owusu
+CUS0195,Araba,Asante,30.0,Other,Tema,customer195@mail.com,244658293.0,Nurse,Bronze,2022-06-28,1223.45,Araba Asante
+CUS0196,Afua,Darko,34.0,Other,Takoradi,customer196@mail.com,248029501.0,Nurse,Bronze,2022-06-26,666.34,Afua Darko
+CUS0197,Nana,Amoah,22.0,Other,Takoradi,customer197@mail.com,247449270.0,Nurse,Silver,2022-06-28,2852.13,Nana Amoah
+CUS0198,Adwoa,Boateng,63.0,Other,Tamale,customer198@mail.com,249501735.0,Engineer,Gold,2021-08-17,4113.12,Adwoa Boateng
+CUS0199,Nana,Osei,43.0,F,Kumasi,customer199@mail.com,242136149.0,Tailor,Silver,2022-08-29,1065.12,Nana Osei
+CUS0200,Abena,Acheampong,29.0,F,Kumasi,customer200@mail.com,245033238.0,Student,Bronze,2021-12-18,1207.16,Abena Acheampong
+CUS0201,Yaw,Tetteh,57.0,Other,Takoradi,customer201@mail.com,249728114.0,Driver,Silver,2022-08-05,3616.38,Yaw Tetteh
+CUS0202,Fiifi,Antwi,65.0,F,Accra,customer202@mail.com,244733985.0,Engineer,Bronze,2022-10-07,1946.08,Fiifi Antwi
+CUS0203,Yoofi,Owusu,19.0,F,Takoradi,customer203@mail.com,241935938.0,Civil Servant,Silver,2022-09-12,4005.06,Yoofi Owusu
+CUS0204,Yaw,Adjei,48.0,M,Accra,customer204@mail.com,245470232.0,Civil Servant,Silver,2022-06-28,2132.43,Yaw Adjei
+CUS0205,Akosua,Acheampong,25.0,F,Kumasi,customer205@mail.com,249534904.0,Driver,Bronze,2022-02-27,2431.58,Akosua Acheampong
+CUS0206,Araba,Appiah,18.0,F,Tema,customer206@mail.com,244281042.0,Tailor,Gold,2021-06-29,4396.52,Araba Appiah
+CUS0207,Abena,Osei,55.0,M,Accra,customer207@mail.com,249044411.0,Engineer,Bronze,2021-11-20,4336.13,Abena Osei
+CUS0208,Abena,Adjei,47.0,,Tema,customer208@mail.com,243689600.0,Farmer,Bronze,2021-01-13,1347.9,Abena Adjei
+CUS0209,Fiifi,Asante,28.0,F,Accra,customer209@mail.com,249525568.0,Trader,Bronze,2021-07-30,4339.83,Fiifi Asante
+CUS0210,Yaw,Boateng,58.0,,Tamale,customer210@mail.com,242396276.0,Trader,Silver,2021-09-16,2014.13,Yaw Boateng
+CUS0211,Fiifi,Adjei,63.0,M,Tema,customer211@mail.com,242074637.0,Tailor,Bronze,2022-03-14,3810.04,Fiifi Adjei
+CUS0212,Akua,Antwi,53.0,M,Tema,customer212@mail.com,248212222.0,Engineer,Silver,2021-10-30,1810.24,Akua Antwi
+CUS0213,Ama,Mensah,22.0,F,Accra,customer213@mail.com,246093136.0,Chef,Gold,2021-06-10,3209.52,Ama Mensah
+CUS0214,Ama,Amoah,26.0,,Kumasi,customer214@mail.com,246406269.0,Teacher,Silver,2022-03-16,3368.91,Ama Amoah
+CUS0215,Adwoa,Agyei,51.0,M,Kumasi,customer215@mail.com,246551480.0,Engineer,Bronze,2021-08-25,560.54,Adwoa Agyei
+CUS0216,Ama,Boateng,45.0,Other,Kumasi,customer216@mail.com,248151665.0,Tailor,Bronze,2022-08-10,3770.86,Ama Boateng
+CUS0217,Ama,Osei,48.0,M,Accra,customer217@mail.com,247535309.0,Nurse,Bronze,2022-11-24,1789.79,Ama Osei
+CUS0218,Kweku,Kyei,55.0,F,Tamale,customer218@mail.com,,Farmer,Silver,2022-04-21,2968.7,Kweku Kyei
+CUS0219,Nana,Frimpong,49.0,M,Takoradi,customer219@mail.com,247017396.0,Teacher,Gold,2022-02-21,3690.62,Nana Frimpong
+CUS0220,Nana,Boateng,59.0,F,Accra,customer220@mail.com,243725100.0,Farmer,Gold,2022-09-17,761.1,Nana Boateng
+CUS0221,Fiifi,Asante,33.0,F,Tema,customer221@mail.com,246102969.0,Engineer,Gold,2022-12-15,4149.49,Fiifi Asante
+CUS0222,Yaw,Tetteh,65.0,F,Tamale,customer222@mail.com,242786889.0,Nurse,Bronze,2021-02-28,4120.13,Yaw Tetteh
+CUS0223,Yaw,Quaye,28.0,M,Tema,customer223@mail.com,,Nurse,Bronze,2021-11-29,1279.8,Yaw Quaye
+CUS0224,Ebo,Mensah,55.0,,Accra,customer224@mail.com,248243838.0,Nurse,Gold,2021-01-20,3729.34,Ebo Mensah
+CUS0225,Maame,Kyei,26.0,F,Tamale,customer225@mail.com,241758255.0,Farmer,Silver,2021-07-02,3580.86,Maame Kyei
+CUS0226,Kwabena,Owusu,54.0,F,Tema,customer226@mail.com,244749702.0,Teacher,Silver,2022-02-21,1409.25,Kwabena Owusu
+CUS0227,Adwoa,Tetteh,39.0,F,Accra,customer227@mail.com,241009434.0,Chef,Bronze,2022-04-24,4406.13,Adwoa Tetteh
+CUS0228,Kwame,Adjei,40.0,M,Kumasi,customer228@mail.com,244441108.0,Engineer,Bronze,2022-06-28,3206.47,Kwame Adjei
+CUS0229,Efua,Osei,56.0,F,Kumasi,customer229@mail.com,249660651.0,Tailor,Bronze,2022-01-20,3260.75,Efua Osei
+CUS0230,Kwame,Boateng,18.0,,Tamale,customer230@mail.com,243124764.0,Student,Bronze,2022-12-05,2868.64,Kwame Boateng
+CUS0231,Kojo,Amoah,39.0,,Tamale,,246918428.0,Trader,Bronze,2022-12-14,1676.45,Kojo Amoah
+CUS0232,Fiifi,Osei,59.0,,Tema,customer232@mail.com,241858147.0,Tailor,Bronze,2022-07-29,2920.47,Fiifi Osei
+CUS0233,Araba,Kyei,48.0,F,Tema,customer233@mail.com,245238782.0,Driver,Gold,2021-08-31,540.92,Araba Kyei
+CUS0234,Yaw,Antwi,20.0,F,Takoradi,customer234@mail.com,245994882.0,Student,Gold,2022-04-08,4471.14,Yaw Antwi
+CUS0235,Adwoa,Darko,24.0,F,Tamale,customer235@mail.com,241909160.0,Student,Bronze,2022-12-07,3182.99,Adwoa Darko
+CUS0236,Afua,Darko,54.0,,Takoradi,customer236@mail.com,242208687.0,Civil Servant,Bronze,2022-03-16,2391.8,Afua Darko
+CUS0237,Efua,Asante,31.0,F,Tema,customer237@mail.com,247508376.0,Nurse,Silver,2021-11-10,2883.85,Efua Asante
+CUS0238,Yoofi,Amoah,30.0,M,Kumasi,customer238@mail.com,249406212.0,Farmer,Gold,2021-11-20,110.76,Yoofi Amoah
+CUS0239,Maame,Asante,30.0,F,Accra,customer239@mail.com,243319359.0,Civil Servant,Gold,2022-02-23,920.28,Maame Asante
+CUS0240,Maame,Boateng,47.0,,Kumasi,customer240@mail.com,241899763.0,Engineer,Silver,2021-09-01,4360.18,Maame Boateng
+CUS0241,Nana,Tetteh,33.0,F,Takoradi,,246782711.0,Student,Bronze,2021-10-02,4113.95,Nana Tetteh
+CUS0242,Adwoa,Owusu,27.0,M,Takoradi,customer242@mail.com,247047367.0,Tailor,Gold,2021-02-07,3606.98,Adwoa Owusu
+CUS0243,Kojo,Owusu,43.0,M,Tema,customer243@mail.com,241239396.0,Civil Servant,Gold,2021-04-24,182.0,Kojo Owusu
+CUS0244,Abena,Darko,65.0,M,Takoradi,customer244@mail.com,245752706.0,Civil Servant,Bronze,2022-02-19,3142.64,Abena Darko
+CUS0245,Ebo,Tetteh,33.0,F,Tamale,customer245@mail.com,243115090.0,Civil Servant,Silver,2022-11-19,3190.33,Ebo Tetteh
+CUS0246,Fiifi,Kyei,45.0,F,Kumasi,customer246@mail.com,249189942.0,Civil Servant,Silver,2021-01-07,2615.68,Fiifi Kyei
+CUS0247,Kofi,Mensah,56.0,F,Tema,customer247@mail.com,243384327.0,Civil Servant,Bronze,2021-03-05,127.31,Kofi Mensah
+CUS0248,Ebo,Tetteh,61.0,Other,Accra,customer248@mail.com,241622874.0,Civil Servant,Silver,2021-07-08,4226.55,Ebo Tetteh
+CUS0249,Yaw,Asante,47.0,F,Takoradi,customer249@mail.com,241556409.0,Student,Bronze,2021-01-25,2716.14,Yaw Asante
+CUS0250,Fiifi,Amoah,28.0,F,Tamale,customer250@mail.com,242217490.0,Tailor,Silver,2021-04-28,2622.06,Fiifi Amoah
+CUS0251,Maame,Darko,42.0,F,Kumasi,,248011249.0,Teacher,Bronze,2022-10-27,4044.83,Maame Darko
+CUS0252,Adwoa,Frimpong,26.0,M,Takoradi,customer252@mail.com,246438342.0,Student,Silver,2021-05-29,2459.56,Adwoa Frimpong
+CUS0253,Abena,Frimpong,46.0,M,Accra,customer253@mail.com,243808691.0,Civil Servant,Bronze,2021-06-20,2512.66,Abena Frimpong
+CUS0254,Esi,Tetteh,36.0,M,Tema,customer254@mail.com,247995360.0,Teacher,Silver,2021-09-22,1948.31,Esi Tetteh
+CUS0255,Maame,Frimpong,34.0,F,Tema,customer255@mail.com,245204511.0,Student,Bronze,2022-03-27,2486.17,Maame Frimpong
+CUS0256,Kwabena,Osei,52.0,,Tema,,241886805.0,Civil Servant,Bronze,2021-09-25,683.14,Kwabena Osei
+CUS0257,Kweku,Agyei,57.0,M,Tamale,customer257@mail.com,243460003.0,Civil Servant,Silver,2022-06-11,3252.01,Kweku Agyei
+CUS0258,Ama,Mensah,63.0,,Accra,customer258@mail.com,248117654.0,Teacher,Gold,2022-10-22,1773.01,Ama Mensah
+CUS0259,Akosua,Acheampong,63.0,,Tamale,customer259@mail.com,242075486.0,Trader,Bronze,2022-02-12,2642.72,Akosua Acheampong
+CUS0260,Adwoa,Agyei,30.0,F,Kumasi,customer260@mail.com,245530803.0,Nurse,Bronze,2021-05-07,3573.52,Adwoa Agyei
+CUS0261,Adwoa,Mensah,23.0,M,Accra,customer261@mail.com,249630811.0,Civil Servant,Bronze,2022-08-14,3931.39,Adwoa Mensah
+CUS0262,Kwame,Asante,24.0,M,Accra,customer262@mail.com,244773789.0,Civil Servant,Bronze,2022-01-11,2626.47,Kwame Asante
+CUS0263,Kweku,Antwi,64.0,M,Takoradi,customer263@mail.com,242536638.0,Teacher,Bronze,2022-03-30,4166.93,Kweku Antwi
+CUS0264,Yoofi,Adjei,21.0,M,Accra,customer264@mail.com,243493048.0,Farmer,Silver,2022-11-24,1336.32,Yoofi Adjei
+CUS0265,Yaw,Asante,48.0,M,Tamale,customer265@mail.com,248896498.0,Farmer,Bronze,2021-06-17,3567.97,Yaw Asante
+CUS0266,Maame,Darko,48.0,Other,Takoradi,customer266@mail.com,248571641.0,Driver,Gold,2021-10-03,3749.8,Maame Darko
+CUS0267,Kwabena,Osei,28.0,M,Accra,customer267@mail.com,247785772.0,Driver,Bronze,2021-12-21,1604.04,Kwabena Osei
+CUS0268,Ebo,Owusu,64.0,F,Kumasi,,244854891.0,Student,Bronze,2021-08-05,3593.19,Ebo Owusu
+CUS0269,Akosua,Mensah,43.0,F,Takoradi,customer269@mail.com,242483166.0,Student,Gold,2022-08-11,2714.27,Akosua Mensah
+CUS0270,Esi,Owusu,20.0,M,Tamale,customer270@mail.com,246660786.0,Chef,Bronze,2022-01-07,810.57,Esi Owusu
+CUS0271,Maame,Mensah,65.0,Other,Kumasi,customer271@mail.com,247272755.0,Engineer,Gold,2021-02-16,696.84,Maame Mensah
+CUS0272,Akua,Asante,46.0,F,Accra,customer272@mail.com,245199090.0,Civil Servant,Silver,2022-08-29,1938.09,Akua Asante
+CUS0273,Yaw,Owusu,50.0,Other,Accra,customer273@mail.com,244517253.0,Teacher,Silver,2022-09-17,2070.12,Yaw Owusu
+CUS0274,Fiifi,Mensah,62.0,M,Kumasi,customer274@mail.com,248022793.0,Driver,Silver,2021-07-23,1590.44,Fiifi Mensah
+CUS0275,Maame,Kyei,49.0,M,Tamale,customer275@mail.com,249124696.0,Chef,Bronze,2022-11-10,3246.26,Maame Kyei
+CUS0276,Adwoa,Osei,27.0,Other,Accra,customer276@mail.com,245159182.0,Student,Bronze,2021-03-07,2193.92,Adwoa Osei
+CUS0277,Akua,Osei,53.0,,Kumasi,customer277@mail.com,249981436.0,Teacher,Gold,2021-09-16,1581.41,Akua Osei
+CUS0278,Nana,Quaye,27.0,,Tema,customer278@mail.com,245677163.0,Farmer,Bronze,2022-09-29,1198.02,Nana Quaye
+CUS0279,Kwame,Agyei,46.0,F,Tema,customer279@mail.com,241054711.0,Farmer,Bronze,2021-10-29,1985.59,Kwame Agyei
+CUS0280,Araba,Amoah,62.0,F,Tamale,customer280@mail.com,242860256.0,Trader,Gold,2022-04-10,3794.63,Araba Amoah
+CUS0281,Nana,Adjei,51.0,F,Takoradi,customer281@mail.com,247745496.0,Trader,Silver,2021-10-21,638.79,Nana Adjei
+CUS0282,Maame,Osei,33.0,F,Kumasi,customer282@mail.com,241589269.0,Trader,Silver,2021-03-05,630.89,Maame Osei
+CUS0283,Afua,Frimpong,58.0,,Accra,,243717088.0,Driver,Gold,2021-11-03,2081.73,Afua Frimpong
+CUS0284,Kwame,Agyei,40.0,F,Tamale,,249246718.0,Chef,Silver,2022-03-05,2531.32,Kwame Agyei
+CUS0285,Akua,Tetteh,49.0,M,Takoradi,customer285@mail.com,249567403.0,Farmer,Bronze,2022-07-07,1835.96,Akua Tetteh
+CUS0286,Kweku,Owusu,32.0,M,Kumasi,customer286@mail.com,249761958.0,Trader,Gold,2021-12-29,670.82,Kweku Owusu
+CUS0287,Maame,Osei,28.0,M,Kumasi,customer287@mail.com,243622599.0,Chef,Gold,2022-11-10,2048.08,Maame Osei
+CUS0288,Kojo,Frimpong,20.0,,Accra,customer288@mail.com,243811643.0,Engineer,Silver,2021-12-03,759.07,Kojo Frimpong
+CUS0289,Kweku,Agyei,19.0,,Tamale,customer289@mail.com,248171853.0,Chef,Silver,2021-08-01,3002.14,Kweku Agyei
+CUS0290,Akosua,Mensah,39.0,M,Accra,customer290@mail.com,249105360.0,Student,Bronze,2021-07-10,1057.91,Akosua Mensah
+CUS0291,Yaw,Darko,35.0,M,Takoradi,,247178762.0,Student,Silver,2022-03-25,1572.45,Yaw Darko
+CUS0292,Afua,Appiah,45.0,M,Accra,customer292@mail.com,244572968.0,Farmer,Bronze,2021-06-27,1636.22,Afua Appiah
+CUS0293,Afua,Darko,55.0,M,Kumasi,customer293@mail.com,248518914.0,Teacher,Gold,2022-04-27,3205.88,Afua Darko
+CUS0294,Kweku,Antwi,34.0,F,Tamale,customer294@mail.com,248686537.0,Teacher,Gold,2021-02-12,513.96,Kweku Antwi
+CUS0295,Nana,Kyei,44.0,,Kumasi,customer295@mail.com,246759109.0,Civil Servant,Bronze,2022-05-04,95.21,Nana Kyei
+CUS0296,Yoofi,Darko,35.0,M,Tamale,customer296@mail.com,243735270.0,Driver,Bronze,2022-06-12,2730.18,Yoofi Darko
+CUS0297,Ama,Mensah,40.0,Other,Kumasi,customer297@mail.com,245391778.0,Farmer,Bronze,2022-07-02,3789.36,Ama Mensah
+CUS0298,Yoofi,Antwi,61.0,F,Kumasi,customer298@mail.com,243160461.0,Teacher,Silver,2021-10-13,3874.57,Yoofi Antwi
+CUS0299,Esi,Appiah,33.0,Other,Kumasi,customer299@mail.com,245156573.0,Farmer,Bronze,2022-08-13,2496.27,Esi Appiah
+CUS0300,Ama,Boateng,21.0,F,Kumasi,customer300@mail.com,244317311.0,Farmer,Bronze,2021-11-25,2089.81,Ama Boateng
+CUS0301,Afua,Owusu,26.0,Other,Takoradi,customer301@mail.com,247175540.0,Student,Silver,2022-10-14,4128.51,Afua Owusu
+CUS0302,Maame,Adjei,60.0,M,Takoradi,customer302@mail.com,245026372.0,Civil Servant,Silver,2021-10-30,2556.0,Maame Adjei
+CUS0303,Ebo,Kyei,58.0,F,Tamale,customer303@mail.com,243691965.0,Farmer,Silver,2021-03-26,3338.86,Ebo Kyei
+CUS0304,Afua,Frimpong,60.0,F,Tema,customer304@mail.com,242615321.0,Nurse,Bronze,2022-01-11,2849.73,Afua Frimpong
+CUS0305,Yoofi,Kyei,29.0,F,Kumasi,customer305@mail.com,244431099.0,Teacher,Silver,2021-04-05,653.0,Yoofi Kyei
+CUS0306,Esi,Agyei,58.0,M,Kumasi,customer306@mail.com,247079661.0,Engineer,Silver,2022-01-30,3269.55,Esi Agyei
+CUS0307,Ama,Frimpong,23.0,Other,Kumasi,customer307@mail.com,241369971.0,Tailor,Gold,2021-06-22,451.63,Ama Frimpong
+CUS0308,Yaw,Adjei,63.0,F,Tamale,customer308@mail.com,241451469.0,Driver,Bronze,2021-04-01,2754.63,Yaw Adjei
+CUS0309,Kojo,Agyei,34.0,Other,Accra,customer309@mail.com,242458953.0,Nurse,Silver,2021-04-01,3609.63,Kojo Agyei
+CUS0310,Ebo,Appiah,65.0,F,Tamale,customer310@mail.com,248254557.0,Trader,Bronze,2021-08-27,1952.46,Ebo Appiah
+CUS0311,Abena,Boateng,44.0,M,Accra,customer311@mail.com,242448081.0,Engineer,Bronze,2021-03-31,421.94,Abena Boateng
+CUS0312,Kweku,Asante,32.0,M,Tamale,customer312@mail.com,249863265.0,Nurse,Bronze,2021-02-10,1740.32,Kweku Asante
+CUS0313,Araba,Boateng,44.0,M,Tamale,customer313@mail.com,244639954.0,Engineer,Gold,2021-11-06,1796.87,Araba Boateng
+CUS0314,Abena,Darko,53.0,Other,Tema,customer314@mail.com,246039755.0,Nurse,Bronze,2022-12-14,428.59,Abena Darko
+CUS0315,Esi,Appiah,59.0,F,Accra,customer315@mail.com,244455171.0,Trader,Bronze,2021-08-11,3447.32,Esi Appiah
+CUS0316,Ama,Appiah,33.0,,Tema,customer316@mail.com,249320349.0,Student,Gold,2021-10-06,3392.52,Ama Appiah
+CUS0317,Akosua,Amoah,27.0,M,Kumasi,customer317@mail.com,249452839.0,Nurse,Bronze,2022-01-02,2952.84,Akosua Amoah
+CUS0318,Afua,Mensah,60.0,Other,Kumasi,customer318@mail.com,247693058.0,Student,Bronze,2021-02-26,110.81,Afua Mensah
+CUS0319,Akosua,Acheampong,56.0,F,Kumasi,customer319@mail.com,245157706.0,Engineer,Silver,2022-09-15,2102.4,Akosua Acheampong
+CUS0320,Esi,Mensah,19.0,,Accra,customer320@mail.com,241814637.0,Chef,Bronze,2022-05-20,930.66,Esi Mensah
+CUS0321,Akosua,Tetteh,29.0,,Takoradi,customer321@mail.com,249827042.0,Chef,Silver,2021-08-10,2822.58,Akosua Tetteh
+CUS0322,Ama,Appiah,59.0,F,Tamale,customer322@mail.com,243371849.0,Farmer,Bronze,2021-06-25,4257.7,Ama Appiah
+CUS0323,Kwame,Amoah,65.0,F,Tamale,customer323@mail.com,241401415.0,Engineer,Gold,2021-10-08,2361.24,Kwame Amoah
+CUS0324,Efua,Appiah,28.0,F,Kumasi,customer324@mail.com,249923618.0,Teacher,Bronze,2021-08-29,1198.53,Efua Appiah
+CUS0325,Kweku,Antwi,33.0,M,Tamale,customer325@mail.com,249046487.0,Driver,Bronze,2022-02-26,1798.38,Kweku Antwi
+CUS0326,Kwame,Quaye,49.0,M,Tamale,customer326@mail.com,247704777.0,Teacher,Bronze,2021-04-01,1207.66,Kwame Quaye
+CUS0327,Adwoa,Osei,50.0,F,Tema,customer327@mail.com,242891460.0,Driver,Silver,2021-11-06,1003.08,Adwoa Osei
+CUS0328,Kwame,Boateng,42.0,M,Kumasi,customer328@mail.com,242277216.0,Nurse,Bronze,2021-03-12,2753.69,Kwame Boateng
+CUS0329,Adwoa,Acheampong,43.0,M,Kumasi,customer329@mail.com,249401630.0,Engineer,Bronze,2021-01-23,2304.18,Adwoa Acheampong
+CUS0330,Adwoa,Mensah,34.0,M,Takoradi,,246670070.0,Tailor,Gold,2021-08-26,3051.82,Adwoa Mensah
+CUS0331,Akua,Owusu,45.0,Other,Kumasi,customer331@mail.com,243513827.0,Engineer,Bronze,2021-01-30,1725.01,Akua Owusu
+CUS0332,Kwame,Quaye,55.0,F,Tema,customer332@mail.com,244888187.0,Chef,Gold,2022-04-28,2978.63,Kwame Quaye
+CUS0333,Afua,Mensah,21.0,F,Takoradi,customer333@mail.com,,Tailor,Bronze,2022-08-18,428.4,Afua Mensah
+CUS0334,Efua,Antwi,61.0,M,Accra,customer334@mail.com,249853171.0,Driver,Bronze,2022-01-05,1260.45,Efua Antwi
+CUS0335,Nana,Frimpong,65.0,F,Tamale,,243082280.0,Driver,Silver,2022-05-01,2692.93,Nana Frimpong
+CUS0336,Nana,Tetteh,40.0,F,Tema,customer336@mail.com,246934577.0,Civil Servant,Silver,2021-09-19,2162.2,Nana Tetteh
+CUS0337,Akua,Quaye,28.0,M,Tema,customer337@mail.com,245774228.0,Farmer,Bronze,2022-05-28,869.35,Akua Quaye
+CUS0338,Efua,Darko,38.0,Other,Takoradi,customer338@mail.com,249629982.0,Tailor,Bronze,2022-11-22,3247.02,Efua Darko
+CUS0339,Ama,Quaye,61.0,F,Kumasi,,245762545.0,Farmer,Bronze,2022-12-01,1852.41,Ama Quaye
+CUS0340,Araba,Kyei,22.0,F,Takoradi,customer340@mail.com,245114166.0,Farmer,Silver,2021-09-03,1610.19,Araba Kyei
+CUS0341,Yaw,Appiah,27.0,Other,Tema,customer341@mail.com,243092024.0,Engineer,Bronze,2022-07-09,4136.45,Yaw Appiah
+CUS0342,Yoofi,Boateng,44.0,F,Tamale,customer342@mail.com,242086312.0,Chef,Bronze,2021-11-30,4321.05,Yoofi Boateng
+CUS0343,Ama,Appiah,61.0,F,Accra,customer343@mail.com,243000855.0,Nurse,Gold,2022-06-19,4201.96,Ama Appiah
+CUS0344,Kwame,Darko,34.0,,Takoradi,customer344@mail.com,243893430.0,Driver,Bronze,2021-09-18,997.34,Kwame Darko
+CUS0345,Yoofi,Appiah,64.0,,Tema,customer345@mail.com,,Student,Bronze,2022-11-18,2544.27,Yoofi Appiah
+CUS0346,Maame,Boateng,25.0,M,Tamale,customer346@mail.com,243784969.0,Civil Servant,Bronze,2022-10-10,2594.29,Maame Boateng
+CUS0347,Ama,Agyei,55.0,F,Kumasi,customer347@mail.com,244607231.0,Tailor,Silver,2021-03-03,4488.69,Ama Agyei
+CUS0348,Esi,Agyei,47.0,M,Accra,customer348@mail.com,248925331.0,Teacher,Silver,2021-03-06,2692.09,Esi Agyei
+CUS0349,Esi,Asante,19.0,Other,Tema,customer349@mail.com,244771454.0,Trader,Bronze,2022-04-03,2269.26,Esi Asante
+CUS0350,Kwabena,Agyei,63.0,Other,Tema,customer350@mail.com,248386304.0,Civil Servant,Silver,2021-02-05,833.21,Kwabena Agyei
+CUS0351,Kweku,Osei,44.0,Other,Takoradi,customer351@mail.com,248165054.0,Student,Bronze,2021-12-22,1654.01,Kweku Osei
+CUS0352,Araba,Osei,35.0,F,Accra,customer352@mail.com,241677097.0,Engineer,Gold,2021-04-02,1535.61,Araba Osei
+CUS0353,Yaw,Acheampong,26.0,F,Accra,customer353@mail.com,247525330.0,Driver,Gold,2021-06-02,814.65,Yaw Acheampong
+CUS0354,Kofi,Quaye,41.0,M,Accra,,244810110.0,Farmer,Bronze,2022-03-30,1975.43,Kofi Quaye
+CUS0355,Yoofi,Adjei,39.0,F,Tamale,customer355@mail.com,241414786.0,Teacher,Silver,2021-05-31,3603.56,Yoofi Adjei
+CUS0356,Efua,Agyei,31.0,F,Kumasi,customer356@mail.com,243172959.0,Trader,Bronze,2022-02-14,4249.36,Efua Agyei
+CUS0357,Esi,Darko,62.0,F,Tema,customer357@mail.com,244124564.0,Farmer,Bronze,2022-02-14,975.14,Esi Darko
+CUS0358,Kofi,Mensah,20.0,M,Kumasi,customer358@mail.com,245210801.0,Teacher,Silver,2021-08-27,3356.63,Kofi Mensah
+CUS0359,Efua,Boateng,18.0,F,Tamale,customer359@mail.com,247687795.0,Nurse,Silver,2021-10-01,1652.21,Efua Boateng
+CUS0360,Afua,Boateng,49.0,F,Accra,customer360@mail.com,248062645.0,Tailor,Silver,2022-07-15,1766.11,Afua Boateng
+CUS0361,Ebo,Kyei,19.0,M,Accra,customer361@mail.com,244732223.0,Student,Bronze,2022-10-31,3025.79,Ebo Kyei
+CUS0362,Abena,Quaye,45.0,Other,Tamale,customer362@mail.com,244425542.0,Driver,Silver,2021-10-24,4328.91,Abena Quaye
+CUS0363,Kofi,Darko,51.0,,Tamale,customer363@mail.com,244543799.0,Nurse,Silver,2022-07-24,1706.71,Kofi Darko
+CUS0364,Araba,Antwi,33.0,F,Accra,customer364@mail.com,241500857.0,Trader,Gold,2021-06-18,101.99,Araba Antwi
+CUS0365,Kofi,Acheampong,45.0,F,Takoradi,customer365@mail.com,248902593.0,Nurse,Gold,2022-03-21,3738.33,Kofi Acheampong
+CUS0366,Araba,Adjei,54.0,F,Accra,customer366@mail.com,246619513.0,Trader,Gold,2022-11-26,702.53,Araba Adjei
+CUS0367,Ebo,Acheampong,48.0,,Takoradi,customer367@mail.com,247956373.0,Engineer,Bronze,2022-01-26,2736.54,Ebo Acheampong
+CUS0368,Araba,Adjei,57.0,M,Tema,customer368@mail.com,247174035.0,Engineer,Bronze,2021-12-11,2141.19,Araba Adjei
+CUS0369,Akua,Mensah,50.0,,Kumasi,,247308956.0,Engineer,Silver,2022-05-18,3355.93,Akua Mensah
+CUS0370,Efua,Frimpong,28.0,F,Takoradi,customer370@mail.com,248583596.0,Driver,Bronze,2021-12-26,1001.53,Efua Frimpong
+CUS0371,Araba,Boateng,22.0,M,Takoradi,customer371@mail.com,248227480.0,Civil Servant,Silver,2022-03-13,4367.33,Araba Boateng
+CUS0372,Nana,Kyei,19.0,,Tamale,customer372@mail.com,244316893.0,Student,Bronze,2022-03-29,1640.45,Nana Kyei
+CUS0373,Nana,Asante,41.0,M,Tamale,customer373@mail.com,242622817.0,Civil Servant,Gold,2022-10-08,4123.05,Nana Asante
+CUS0374,Kwame,Mensah,63.0,,Kumasi,customer374@mail.com,248020709.0,Civil Servant,Bronze,2022-11-04,3767.49,Kwame Mensah
+CUS0375,Kojo,Quaye,34.0,M,Takoradi,customer375@mail.com,241503223.0,Farmer,Bronze,2022-05-21,1993.51,Kojo Quaye
+CUS0376,Kweku,Quaye,23.0,F,Tema,customer376@mail.com,245429570.0,Farmer,Bronze,2022-07-21,2747.72,Kweku Quaye
+CUS0377,Kofi,Acheampong,43.0,F,Accra,customer377@mail.com,241756296.0,Chef,Bronze,2022-06-05,2919.91,Kofi Acheampong
+CUS0378,Yaw,Osei,61.0,M,Kumasi,customer378@mail.com,249864908.0,Civil Servant,Bronze,2022-02-04,1518.4,Yaw Osei
+CUS0379,Kofi,Darko,25.0,F,Accra,customer379@mail.com,241755089.0,Engineer,Gold,2021-07-11,3911.63,Kofi Darko
+CUS0380,Kweku,Asante,44.0,Other,Takoradi,customer380@mail.com,248710067.0,Civil Servant,Silver,2022-09-29,4117.33,Kweku Asante
+CUS0381,Yaw,Boateng,25.0,M,Kumasi,,247795786.0,Farmer,Gold,2022-11-04,2503.06,Yaw Boateng
+CUS0382,Kofi,Asante,44.0,M,Accra,customer382@mail.com,244718013.0,Engineer,Silver,2022-12-29,1708.99,Kofi Asante
+CUS0383,Kojo,Tetteh,52.0,M,Accra,customer383@mail.com,246683046.0,Student,Silver,2022-03-02,3564.69,Kojo Tetteh
+CUS0384,Kweku,Adjei,18.0,F,Tamale,customer384@mail.com,247287806.0,Chef,Bronze,2021-04-19,1762.21,Kweku Adjei
+CUS0385,Araba,Boateng,59.0,Other,Takoradi,customer385@mail.com,,Farmer,Gold,2021-04-03,587.62,Araba Boateng
+CUS0386,Nana,Quaye,24.0,Other,Tema,customer386@mail.com,241130641.0,Chef,Bronze,2022-11-19,2906.95,Nana Quaye
+CUS0387,Fiifi,Adjei,43.0,F,Tamale,customer387@mail.com,243578628.0,Tailor,Silver,2021-06-01,973.53,Fiifi Adjei
+CUS0388,Yaw,Agyei,26.0,M,Accra,customer388@mail.com,244576858.0,Student,Silver,2021-03-18,375.04,Yaw Agyei
+CUS0389,Akosua,Agyei,48.0,M,Tamale,customer389@mail.com,,Civil Servant,Bronze,2022-05-23,353.91,Akosua Agyei
+CUS0390,Kojo,Asante,29.0,F,Accra,,249227322.0,Nurse,Silver,2022-03-01,540.25,Kojo Asante
+CUS0391,Fiifi,Owusu,53.0,M,Kumasi,customer391@mail.com,244718703.0,Engineer,Bronze,2022-03-18,860.39,Fiifi Owusu
+CUS0392,Abena,Asante,40.0,M,Kumasi,customer392@mail.com,245772932.0,Farmer,Bronze,2022-08-21,1965.61,Abena Asante
+CUS0393,Araba,Acheampong,60.0,Other,Tamale,,,Driver,Gold,2022-12-06,187.24,Araba Acheampong
+CUS0394,Efua,Antwi,43.0,F,Tema,customer394@mail.com,242731721.0,Chef,Bronze,2021-04-02,1176.62,Efua Antwi
+CUS0395,Akua,Appiah,65.0,M,Accra,customer395@mail.com,244960862.0,Driver,Bronze,2022-02-21,2559.46,Akua Appiah
+CUS0396,Ama,Tetteh,34.0,M,Tema,customer396@mail.com,248662717.0,Driver,Gold,2021-10-15,1822.77,Ama Tetteh
+CUS0397,Fiifi,Adjei,56.0,M,Tema,customer397@mail.com,245599970.0,Nurse,Gold,2022-07-25,686.68,Fiifi Adjei
+CUS0398,Afua,Quaye,57.0,M,Takoradi,customer398@mail.com,249953228.0,Driver,Bronze,2022-11-05,1857.75,Afua Quaye
+CUS0399,Ebo,Amoah,42.0,Other,Takoradi,customer399@mail.com,249798582.0,Civil Servant,Bronze,2022-09-12,2138.89,Ebo Amoah
+CUS0400,Araba,Mensah,36.0,Other,Kumasi,customer400@mail.com,248482476.0,Civil Servant,Bronze,2022-11-20,588.27,Araba Mensah
+CUS0401,Akosua,Antwi,43.0,F,Takoradi,customer401@mail.com,243138670.0,Driver,Bronze,2022-02-01,3948.78,Akosua Antwi
+CUS0402,Kwame,Acheampong,56.0,M,Tema,customer402@mail.com,245955190.0,Teacher,Silver,2022-10-09,329.93,Kwame Acheampong
+CUS0403,Abena,Tetteh,41.0,M,Kumasi,,246730611.0,Civil Servant,Bronze,2022-05-25,53.06,Abena Tetteh
+CUS0404,Akua,Quaye,38.0,F,Accra,customer404@mail.com,243519917.0,Teacher,Silver,2022-06-20,1651.91,Akua Quaye
+CUS0405,Efua,Boateng,64.0,F,Tema,customer405@mail.com,,Tailor,Bronze,2021-08-22,1073.21,Efua Boateng
+CUS0406,Kwame,Mensah,60.0,M,Tamale,customer406@mail.com,245330922.0,Engineer,Silver,2021-06-02,535.06,Kwame Mensah
+CUS0407,Fiifi,Appiah,35.0,M,Kumasi,customer407@mail.com,248811073.0,Student,Bronze,2022-12-17,3441.16,Fiifi Appiah
+CUS0408,Kwame,Boateng,27.0,M,Kumasi,customer408@mail.com,249255836.0,Tailor,Bronze,2022-12-07,3901.45,Kwame Boateng
+CUS0409,Ama,Asante,65.0,Other,Kumasi,customer409@mail.com,243728392.0,Civil Servant,Gold,2022-06-14,4470.54,Ama Asante
+CUS0410,Maame,Adjei,51.0,,Takoradi,customer410@mail.com,246818799.0,Trader,Bronze,2022-09-24,998.77,Maame Adjei
+CUS0411,Yoofi,Agyei,62.0,M,Kumasi,customer411@mail.com,246401085.0,Engineer,Gold,2021-11-04,569.56,Yoofi Agyei
+CUS0412,Kofi,Darko,47.0,F,Kumasi,,249846078.0,Trader,Bronze,2022-06-24,4331.72,Kofi Darko
+CUS0413,Nana,Acheampong,28.0,M,Tamale,customer413@mail.com,249307136.0,Driver,Gold,2021-01-08,3195.12,Nana Acheampong
+CUS0414,Kofi,Appiah,50.0,F,Kumasi,customer414@mail.com,247543549.0,Chef,Gold,2022-04-03,2738.59,Kofi Appiah
+CUS0415,Kofi,Appiah,24.0,F,Takoradi,customer415@mail.com,245417911.0,Engineer,Bronze,2022-01-16,2878.29,Kofi Appiah
+CUS0416,Kweku,Adjei,25.0,Other,Takoradi,customer416@mail.com,248740350.0,Driver,Gold,2021-01-16,4195.5,Kweku Adjei
+CUS0417,Ebo,Darko,31.0,F,Takoradi,customer417@mail.com,248565242.0,Trader,Bronze,2021-03-12,1973.01,Ebo Darko
+CUS0418,Kofi,Amoah,57.0,M,Kumasi,,249327109.0,Farmer,Silver,2022-04-24,3215.91,Kofi Amoah
+CUS0419,Esi,Owusu,62.0,,Tamale,,243195026.0,Nurse,Gold,2021-12-31,2598.46,Esi Owusu
+CUS0420,Kojo,Agyei,27.0,M,Tamale,customer420@mail.com,244534222.0,Engineer,Bronze,2022-05-27,762.79,Kojo Agyei
+CUS0421,Afua,Mensah,29.0,F,Accra,customer421@mail.com,249814085.0,Engineer,Bronze,2021-08-23,2522.31,Afua Mensah
+CUS0422,Adwoa,Mensah,37.0,F,Tema,customer422@mail.com,246926589.0,Civil Servant,Bronze,2022-04-16,66.61,Adwoa Mensah
+CUS0423,Fiifi,Agyei,46.0,M,Tamale,customer423@mail.com,244565605.0,Chef,Bronze,2022-01-22,3900.19,Fiifi Agyei
+CUS0424,Afua,Agyei,52.0,F,Tamale,customer424@mail.com,241186116.0,Driver,Silver,2021-06-18,3517.65,Afua Agyei
+CUS0425,Kofi,Acheampong,59.0,Other,Accra,customer425@mail.com,246910856.0,Engineer,Bronze,2022-08-24,858.58,Kofi Acheampong
+CUS0426,Esi,Osei,34.0,F,Accra,customer426@mail.com,246188973.0,Civil Servant,Gold,2022-11-01,486.45,Esi Osei
+CUS0427,Kojo,Quaye,34.0,F,Tema,customer427@mail.com,241318382.0,Driver,Bronze,2021-07-05,3210.93,Kojo Quaye
+CUS0428,Kwame,Owusu,32.0,F,Tamale,customer428@mail.com,247063783.0,Chef,Silver,2022-01-21,3208.39,Kwame Owusu
+CUS0429,Yoofi,Amoah,54.0,F,Tema,customer429@mail.com,247608160.0,Farmer,Bronze,2021-09-22,2259.62,Yoofi Amoah
+CUS0430,Yoofi,Appiah,49.0,F,Takoradi,customer430@mail.com,248132755.0,Nurse,Silver,2022-02-14,3758.85,Yoofi Appiah
+CUS0431,Akua,Adjei,37.0,M,Tamale,customer431@mail.com,245995921.0,Trader,Bronze,2021-04-02,3550.47,Akua Adjei
+CUS0432,Yoofi,Acheampong,26.0,M,Accra,customer432@mail.com,242375690.0,Engineer,Bronze,2021-07-16,522.87,Yoofi Acheampong
+CUS0433,Efua,Antwi,37.0,,Tamale,customer433@mail.com,242251341.0,Driver,Bronze,2022-06-23,2736.5,Efua Antwi
+CUS0434,Akosua,Osei,23.0,M,Takoradi,customer434@mail.com,242502609.0,Farmer,Bronze,2021-01-03,1047.56,Akosua Osei
+CUS0435,Araba,Acheampong,60.0,F,Tema,customer435@mail.com,241613527.0,Tailor,Silver,2021-01-28,1805.1,Araba Acheampong
+CUS0436,Kweku,Darko,20.0,M,Takoradi,customer436@mail.com,247492009.0,Tailor,Bronze,2021-07-05,2002.8,Kweku Darko
+CUS0437,Kwame,Adjei,28.0,,Tamale,customer437@mail.com,249202257.0,Student,Bronze,2021-10-01,577.53,Kwame Adjei
+CUS0438,Afua,Appiah,61.0,M,Tema,customer438@mail.com,,Tailor,Bronze,2021-12-10,2310.5,Afua Appiah
+CUS0439,Esi,Tetteh,44.0,,Kumasi,,249404621.0,Civil Servant,Bronze,2022-06-05,3885.87,Esi Tetteh
+CUS0440,Nana,Osei,55.0,,Accra,customer440@mail.com,244368270.0,Trader,Bronze,2021-10-28,1810.48,Nana Osei
+CUS0441,Ebo,Acheampong,49.0,M,Takoradi,customer441@mail.com,247496909.0,Civil Servant,Bronze,2022-11-05,1203.81,Ebo Acheampong
+CUS0442,Ebo,Adjei,55.0,F,Takoradi,customer442@mail.com,245240300.0,Farmer,Silver,2022-10-11,210.55,Ebo Adjei
+CUS0443,Kojo,Quaye,58.0,M,Tamale,customer443@mail.com,249794923.0,Tailor,Bronze,2021-05-13,1450.95,Kojo Quaye
+CUS0444,Kojo,Quaye,32.0,F,Takoradi,customer444@mail.com,241545899.0,Student,Bronze,2022-10-20,82.45,Kojo Quaye
+CUS0445,Ebo,Acheampong,32.0,M,Tamale,customer445@mail.com,247829698.0,Tailor,Bronze,2022-06-29,1398.1,Ebo Acheampong
+CUS0446,Ama,Appiah,65.0,F,Accra,customer446@mail.com,245610990.0,Nurse,Gold,2022-06-22,55.82,Ama Appiah
+CUS0447,Adwoa,Mensah,42.0,M,Kumasi,customer447@mail.com,249665856.0,Engineer,Bronze,2021-08-12,2061.2,Adwoa Mensah
+CUS0448,Akosua,Quaye,55.0,Other,Takoradi,customer448@mail.com,247611828.0,Civil Servant,Silver,2022-03-19,216.18,Akosua Quaye
+CUS0449,Araba,Appiah,31.0,F,Tamale,customer449@mail.com,241900697.0,Tailor,Gold,2021-05-20,3690.82,Araba Appiah
+CUS0450,Yoofi,Antwi,22.0,F,Tamale,customer450@mail.com,247572309.0,Driver,Bronze,2021-02-24,1217.55,Yoofi Antwi
+CUS0451,Kojo,Mensah,47.0,M,Takoradi,customer451@mail.com,246392735.0,Student,Silver,2022-05-03,1701.86,Kojo Mensah
+CUS0452,Ebo,Frimpong,63.0,M,Tema,customer452@mail.com,,Civil Servant,Bronze,2022-04-30,2143.15,Ebo Frimpong
+CUS0453,Fiifi,Boateng,45.0,M,Kumasi,,247696236.0,Nurse,Silver,2022-04-27,2586.43,Fiifi Boateng
+CUS0454,Kwabena,Kyei,26.0,F,Kumasi,customer454@mail.com,245168475.0,Student,Bronze,2021-07-12,4211.52,Kwabena Kyei
+CUS0455,Ama,Appiah,46.0,M,Tema,customer455@mail.com,247096256.0,Nurse,Bronze,2021-01-10,3693.08,Ama Appiah
+CUS0456,Esi,Amoah,35.0,M,Tema,customer456@mail.com,245511470.0,Chef,Silver,2021-02-11,3634.61,Esi Amoah
+CUS0457,Maame,Kyei,32.0,M,Takoradi,customer457@mail.com,243169230.0,Student,Silver,2021-09-18,2337.62,Maame Kyei
+CUS0458,Fiifi,Darko,57.0,Other,Takoradi,customer458@mail.com,242387594.0,Civil Servant,Bronze,2021-01-11,3361.72,Fiifi Darko
+CUS0459,Kofi,Tetteh,38.0,F,Accra,customer459@mail.com,244123755.0,Teacher,Bronze,2022-10-02,2837.18,Kofi Tetteh
+CUS0460,Maame,Agyei,41.0,M,Accra,customer460@mail.com,243666799.0,Engineer,Silver,2022-03-23,218.05,Maame Agyei
+CUS0461,Ama,Frimpong,26.0,F,Tema,customer461@mail.com,241053973.0,Engineer,Bronze,2022-09-14,2008.74,Ama Frimpong
+CUS0462,Kofi,Frimpong,59.0,F,Kumasi,customer462@mail.com,,Trader,Silver,2022-08-31,2761.2,Kofi Frimpong
+CUS0463,Abena,Amoah,31.0,M,Accra,,247450998.0,Chef,Silver,2021-04-06,3644.48,Abena Amoah
+CUS0464,Araba,Darko,21.0,M,Takoradi,customer464@mail.com,245829908.0,Student,Silver,2021-11-05,4122.73,Araba Darko
+CUS0465,Efua,Agyei,40.0,F,Takoradi,customer465@mail.com,242761238.0,Farmer,Bronze,2022-03-31,2434.24,Efua Agyei
+CUS0466,Abena,Antwi,49.0,M,Tamale,customer466@mail.com,242651995.0,Chef,Gold,2021-05-29,871.76,Abena Antwi
+CUS0467,Esi,Owusu,41.0,F,Tamale,customer467@mail.com,,Teacher,Bronze,2022-01-09,601.5,Esi Owusu
+CUS0468,Esi,Quaye,45.0,F,Accra,customer468@mail.com,245935373.0,Chef,Bronze,2022-09-28,1303.68,Esi Quaye
+CUS0469,Araba,Agyei,65.0,M,Tema,,241689058.0,Engineer,Gold,2021-04-28,169.09,Araba Agyei
+CUS0470,Kwabena,Amoah,44.0,F,Tamale,customer470@mail.com,242040238.0,Chef,Silver,2022-09-02,646.76,Kwabena Amoah
+CUS0471,Afua,Quaye,27.0,,Takoradi,customer471@mail.com,244018551.0,Farmer,Gold,2022-04-03,3963.26,Afua Quaye
+CUS0472,Kweku,Darko,25.0,,Tamale,customer472@mail.com,,Student,Bronze,2021-05-10,3212.59,Kweku Darko
+CUS0473,Araba,Antwi,39.0,M,Accra,customer473@mail.com,243224186.0,Engineer,Silver,2022-01-08,2558.2,Araba Antwi
+CUS0474,Ebo,Darko,44.0,M,Kumasi,customer474@mail.com,248229734.0,Student,Gold,2022-11-06,2827.09,Ebo Darko
+CUS0475,Abena,Appiah,19.0,,Tema,customer475@mail.com,242052832.0,Driver,Gold,2022-01-20,4270.54,Abena Appiah
+CUS0476,Kofi,Asante,62.0,F,Takoradi,customer476@mail.com,245861870.0,Farmer,Gold,2022-10-05,2820.07,Kofi Asante
+CUS0477,Kwame,Antwi,39.0,F,Kumasi,customer477@mail.com,249114373.0,Civil Servant,Bronze,2022-01-08,2314.94,Kwame Antwi
+CUS0478,Araba,Owusu,53.0,Other,Accra,,242333079.0,Student,Bronze,2022-09-20,1698.98,Araba Owusu
+CUS0479,Yaw,Owusu,39.0,,Tamale,customer479@mail.com,247559372.0,Chef,Bronze,2022-11-28,3997.89,Yaw Owusu
+CUS0480,Nana,Asante,57.0,F,Accra,,241560559.0,Farmer,Gold,2022-11-30,3565.75,Nana Asante
+CUS0481,Efua,Frimpong,53.0,Other,Takoradi,customer481@mail.com,,Tailor,Silver,2021-07-21,894.87,Efua Frimpong
+CUS0482,Yoofi,Asante,61.0,M,Kumasi,customer482@mail.com,248508579.0,Chef,Silver,2021-09-01,4249.18,Yoofi Asante
+CUS0483,Afua,Boateng,22.0,Other,Tema,customer483@mail.com,245168565.0,Driver,Silver,2022-07-28,3339.21,Afua Boateng
+CUS0484,Yaw,Kyei,52.0,Other,Tema,customer484@mail.com,245665644.0,Trader,Silver,2021-08-27,3681.97,Yaw Kyei
+CUS0485,Fiifi,Amoah,37.0,M,Tema,customer485@mail.com,248282887.0,Civil Servant,Silver,2021-10-09,2018.43,Fiifi Amoah
+CUS0486,Yoofi,Quaye,59.0,M,Takoradi,customer486@mail.com,243831402.0,Driver,Bronze,2021-12-02,2392.81,Yoofi Quaye
+CUS0487,Akosua,Amoah,60.0,F,Kumasi,customer487@mail.com,246486761.0,Farmer,Bronze,2021-04-01,1845.02,Akosua Amoah
+CUS0488,Abena,Acheampong,59.0,M,Tamale,customer488@mail.com,247291982.0,Driver,Bronze,2021-05-28,1779.27,Abena Acheampong
+CUS0489,Fiifi,Frimpong,44.0,M,Kumasi,customer489@mail.com,243288452.0,Driver,Bronze,2022-11-15,2542.82,Fiifi Frimpong
+CUS0490,Kojo,Appiah,26.0,M,Accra,customer490@mail.com,242079141.0,Engineer,Bronze,2021-07-10,1890.85,Kojo Appiah
+CUS0491,Kofi,Osei,37.0,F,Tamale,customer491@mail.com,246461852.0,Student,Silver,2022-12-25,1827.31,Kofi Osei
+CUS0492,Ama,Asante,60.0,F,Accra,customer492@mail.com,243210644.0,Civil Servant,Silver,2022-01-16,3381.32,Ama Asante
+CUS0493,Kwabena,Osei,59.0,Other,Kumasi,customer493@mail.com,241611042.0,Farmer,Bronze,2022-03-11,527.8,Kwabena Osei
+CUS0494,Adwoa,Frimpong,45.0,M,Kumasi,customer494@mail.com,249558084.0,Civil Servant,Bronze,2021-12-30,1162.77,Adwoa Frimpong
+CUS0495,Maame,Owusu,63.0,F,Tamale,,246831784.0,Teacher,Gold,2021-04-13,1869.37,Maame Owusu
+CUS0496,Fiifi,Tetteh,58.0,F,Takoradi,customer496@mail.com,244114349.0,Trader,Silver,2021-04-14,2553.81,Fiifi Tetteh
+CUS0497,Yaw,Appiah,48.0,M,Takoradi,customer497@mail.com,244430189.0,Chef,Bronze,2022-03-10,56.96,Yaw Appiah
+CUS0498,Kofi,Asante,20.0,M,Tamale,customer498@mail.com,245484067.0,Farmer,Bronze,2022-06-02,4055.8,Kofi Asante
+CUS0499,Ama,Tetteh,59.0,,Accra,customer499@mail.com,246894627.0,Tailor,Bronze,2021-10-30,1960.0,Ama Tetteh
+CUS0500,Esi,Amoah,25.0,M,Tema,customer500@mail.com,247145165.0,Nurse,Silver,2021-10-24,228.66,Esi Amoah
