@@ -128,7 +128,7 @@ async def get_summary(
             submission = db.query(Submission).filter(
                 Submission.store_id == user["store_id"],
                 extract("isoyear", Submission.week_start) == cur_year,
-                extract("week", Submission.week_start) == cur_week,
+                extract("week",    Submission.week_start) == cur_week,
             ).first()
             week_submitted = submission is not None
 
@@ -233,15 +233,21 @@ async def get_ops_summary(
 
         stores = db.query(Store).all()
 
+        # ── KEY FIX: join through submissions so we aggregate by submission
+        # week (period_year/period_week), not transaction_date week.
+        # This means "Week 24" on the ops page shows data from any submission
+        # tagged as Week 24, regardless of what dates the transactions carry.
         store_revenues = (
             db.query(
                 Transaction.store_id,
                 func.sum(Transaction.total_price).label("revenue"),
                 func.count(Transaction.transaction_id).label("txns"),
             )
+            .join(Submission, Submission.submission_id == Transaction.submission_id)
             .filter(
-                extract("isoyear", Transaction.transaction_date) == cur_year,
-                extract("week",    Transaction.transaction_date) == cur_week,
+                extract("isoyear", Submission.week_start) == cur_year,
+                extract("week",    Submission.week_start) == cur_week,
+                Submission.status == "active",
             )
             .group_by(Transaction.store_id)
             .all()
@@ -251,9 +257,11 @@ async def get_ops_summary(
 
         prv_txns_total = (
             db.query(func.count(Transaction.transaction_id))
+            .join(Submission, Submission.submission_id == Transaction.submission_id)
             .filter(
-                extract("isoyear", Transaction.transaction_date) == prv_year,
-                extract("week",    Transaction.transaction_date) == prv_week,
+                extract("isoyear", Submission.week_start) == prv_year,
+                extract("week",    Submission.week_start) == prv_week,
+                Submission.status == "active",
             )
             .scalar() or 0
         )
@@ -262,6 +270,7 @@ async def get_ops_summary(
         submissions = db.query(Submission).filter(
             extract("isoyear", Submission.week_start) == cur_year,
             extract("week",    Submission.week_start) == cur_week,
+            Submission.status == "active",
         ).all()
         sub_map = {s.store_id: s for s in submissions}
 
@@ -312,10 +321,7 @@ async def get_ops_summary(
 
 
 def iso_weeks_in_year(year: int) -> int:
-    """Return 52 or 53 — the number of ISO weeks in a given year."""
-    # A year has 53 ISO weeks if Jan 1 or Dec 31 falls on a Thursday
-    from datetime import date
-    jan1_dow = date(year, 1, 1).weekday()   # 0=Mon, 3=Thu
+    jan1_dow = date(year, 1, 1).weekday()
     dec31_dow = date(year, 12, 31).weekday()
     return 53 if jan1_dow == 3 or dec31_dow == 3 else 52
 
@@ -324,10 +330,6 @@ def _all_weeks_between(
     start_year: int, start_week: int,
     end_year: int,   end_week: int,
 ) -> list[tuple[int, int]]:
-    """
-    Return every (iso_year, iso_week) pair from (start) to (end) inclusive,
-    newest first.
-    """
     weeks = []
     y, w = end_year, end_week
     while (y, w) >= (start_year, start_week):
@@ -344,18 +346,14 @@ async def get_available_weeks(
         db: Session = Depends(get_db),
         user=Depends(get_current_user),
 ):
-    # Updated: Allow 'ops' AND 'manager' roles
     if user["role"] not in ["ops", "manager"]:
         raise HTTPException(status_code=403, detail="Access denied")
 
     try:
-        # Find the earliest week that has any transaction data
         query = db.query(
             extract("isoyear", Transaction.transaction_date).label("iso_year"),
             extract("week", Transaction.transaction_date).label("iso_week"),
         )
-
-        # Apply filters so managers only see weeks relevant to their store's data
         query = apply_store_filter(query, user)
 
         earliest = (
