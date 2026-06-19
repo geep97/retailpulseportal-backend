@@ -31,26 +31,26 @@ VALID_PAYMENT_METHODS = {"Cash", "Mobile Money", "Bank Card", "Credit"}
 
 # ── STEP 1: SCHEMA ALIGNMENT ────────────────────────────────
 def align_schema(df: pd.DataFrame) -> pd.DataFrame:
-    # Strip whitespace from column headers
+
     df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
 
-    # Check required columns are present
+
     missing = REQUIRED_COLUMNS - set(df.columns)
     if missing:
         raise ValueError(f"Missing required columns: {missing}")
 
-    # Add optional columns if absent
+
     if "total_revenue" not in df.columns:
         df["total_revenue"] = None
     if "customer_id" not in df.columns:
         df["customer_id"] = ""
 
-    # Standardise date format
+
     df["transaction_date"] = pd.to_datetime(
         df["transaction_date"], errors="coerce"
     ).dt.strftime("%Y-%m-%d")
 
-    # Strip whitespace from string columns
+
     for col in ["product_name", "category", "payment_method"]:
         if col in df.columns:
             df[col] = df[col].astype(str).str.strip()
@@ -58,7 +58,7 @@ def align_schema(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-# ── STEP 2: ANOMALY EXCLUSION ────────────────────────────────
+
 def exclude_anomalies(df: pd.DataFrame):
     excluded = []
     clean_mask = pd.Series([True] * len(df), index=df.index)
@@ -159,20 +159,20 @@ def check_duplicate_submission(
 
 # ── PRODUCT RESOLVER ─────────────────────────────────────────
 def resolve_product_id(db: Session, product_name: str, unit_price: float, category: str) -> int:
-    """Look up product by name; create it if it doesn't exist. Returns product_id."""
+
     product = db.query(Product).filter(
         Product.product_name == product_name
     ).first()
     if product:
         return product.product_id
-    # Auto-create unknown product from CSV data
+
     new_product = Product(
         product_name=product_name,
         unit_price=unit_price,
         category=category or "Uncategorised",
     )
     db.add(new_product)
-    db.flush()  # get product_id without committing
+    db.flush()
     return new_product.product_id
 
 
@@ -288,7 +288,7 @@ async def upload_weekly_ledger(
             detail="Only store managers can upload files."
         )
 
-    # store_id from JWT — never from form
+
     store_id = user["store_id"]
     if not store_id:
         raise HTTPException(

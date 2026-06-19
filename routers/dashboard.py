@@ -34,39 +34,18 @@ def get_current_iso_week() -> tuple[int, int]:
     return iso[0], iso[1]
 
 
-def get_week_revenue(db, user, iso_year: int, iso_week: int) -> float:
-    query = db.query(func.sum(Transaction.total_price)).filter(
-        extract("isoyear", Transaction.transaction_date) == iso_year,
-        extract("week", Transaction.transaction_date) == iso_week,
-    )
-    query = apply_store_filter(query, user)
-    return float(query.scalar() or 0)
-
-
-def get_week_transactions(db, user, iso_year: int, iso_week: int) -> int:
-    query = db.query(func.count(Transaction.transaction_id)).filter(
-        extract("isoyear", Transaction.transaction_date) == iso_year,
-        extract("week", Transaction.transaction_date) == iso_week,
-    )
-    query = apply_store_filter(query, user)
-    return int(query.scalar() or 0)
-
-
-def get_week_avg_basket(db, user, iso_year: int, iso_week: int) -> float:
-    query = db.query(func.avg(Transaction.total_price)).filter(
-        extract("isoyear", Transaction.transaction_date) == iso_year,
-        extract("week", Transaction.transaction_date) == iso_week,
-    )
-    query = apply_store_filter(query, user)
-    return float(round(query.scalar() or 0, 2))
-
-
 def prev_iso_week(iso_year: int, iso_week: int) -> tuple[int, int]:
     jan4 = date(iso_year, 1, 4)
     monday = jan4 + timedelta(weeks=iso_week - 1) - timedelta(days=jan4.weekday())
     prev_monday = monday - timedelta(weeks=1)
     iso = prev_monday.isocalendar()
     return iso[0], iso[1]
+
+
+def iso_weeks_in_year(year: int) -> int:
+    jan1_dow = date(year, 1, 1).weekday()
+    dec31_dow = date(year, 12, 31).weekday()
+    return 53 if jan1_dow == 3 or dec31_dow == 3 else 52
 
 
 def pct_change(current: float, previous: float) -> float | None:
@@ -82,15 +61,85 @@ def week_label(iso_year: int, iso_week: int) -> str:
     return f"Week {iso_week} · {month_name}"
 
 
+def get_week_revenue_by_submission(
+    db: Session, user: dict, iso_year: int, iso_week: int
+) -> float:
+    query = (
+        db.query(func.sum(Transaction.total_price))
+        .join(Submission, Submission.submission_id == Transaction.submission_id)
+        .filter(
+            extract("isoyear", Submission.week_start) == iso_year,
+            extract("week",    Submission.week_start) == iso_week,
+            Submission.status == "active",
+        )
+    )
+    if user["role"] == "manager":
+        query = query.filter(Transaction.store_id == user["store_id"])
+    return float(query.scalar() or 0)
+
+
+def get_week_transactions_by_submission(
+    db: Session, user: dict, iso_year: int, iso_week: int
+) -> int:
+    query = (
+        db.query(func.count(Transaction.transaction_id))
+        .join(Submission, Submission.submission_id == Transaction.submission_id)
+        .filter(
+            extract("isoyear", Submission.week_start) == iso_year,
+            extract("week",    Submission.week_start) == iso_week,
+            Submission.status == "active",
+        )
+    )
+    if user["role"] == "manager":
+        query = query.filter(Transaction.store_id == user["store_id"])
+    return int(query.scalar() or 0)
+
+
+def get_week_avg_basket_by_submission(
+    db: Session, user: dict, iso_year: int, iso_week: int
+) -> float:
+    query = (
+        db.query(func.avg(Transaction.total_price))
+        .join(Submission, Submission.submission_id == Transaction.submission_id)
+        .filter(
+            extract("isoyear", Submission.week_start) == iso_year,
+            extract("week",    Submission.week_start) == iso_week,
+            Submission.status == "active",
+        )
+    )
+    if user["role"] == "manager":
+        query = query.filter(Transaction.store_id == user["store_id"])
+    return float(round(query.scalar() or 0, 2))
+
+
+def _all_weeks_between(
+    start_year: int, start_week: int,
+    end_year: int,   end_week: int,
+) -> list[tuple[int, int]]:
+    weeks = []
+    y, w = end_year, end_week
+    while (y, w) >= (start_year, start_week):
+        weeks.append((y, w))
+        w -= 1
+        if w == 0:
+            y -= 1
+            w = iso_weeks_in_year(y)
+    return weeks
+
+
+# ── /me ──────────────────────────────────────────────────
 @router.get("/me")
 async def get_me(user=Depends(get_current_user)):
     return user
 
 
+# ── /summary ─────────────────────────────────────────────
 @router.get("/summary")
 async def get_summary(
     db: Session = Depends(get_db),
-    user=Depends(get_current_user)
+    user=Depends(get_current_user),
+    iso_year: int | None = None,
+    iso_week: int | None = None,
 ):
     try:
         total_revenue_query = db.query(func.sum(Transaction.total_price))
@@ -111,17 +160,20 @@ async def get_summary(
         stock_alert_query = apply_inventory_store_filter(stock_alert_query, user)
         stock_alert_count = int(stock_alert_query.scalar() or 0)
 
-        cur_year, cur_week = get_current_iso_week()
+
+        if iso_year and iso_week:
+            cur_year, cur_week = iso_year, iso_week
+        else:
+            cur_year, cur_week = get_current_iso_week()
+
         prv_year, prv_week = prev_iso_week(cur_year, cur_week)
 
-        cur_revenue = get_week_revenue(db, user, cur_year, cur_week)
-        prv_revenue = get_week_revenue(db, user, prv_year, prv_week)
-
-        cur_transactions = get_week_transactions(db, user, cur_year, cur_week)
-        prv_transactions = get_week_transactions(db, user, prv_year, prv_week)
-
-        cur_avg_basket = get_week_avg_basket(db, user, cur_year, cur_week)
-        prv_avg_basket = get_week_avg_basket(db, user, prv_year, prv_week)
+        cur_revenue      = get_week_revenue_by_submission(db, user, cur_year, cur_week)
+        prv_revenue      = get_week_revenue_by_submission(db, user, prv_year, prv_week)
+        cur_transactions = get_week_transactions_by_submission(db, user, cur_year, cur_week)
+        prv_transactions = get_week_transactions_by_submission(db, user, prv_year, prv_week)
+        cur_avg_basket   = get_week_avg_basket_by_submission(db, user, cur_year, cur_week)
+        prv_avg_basket   = get_week_avg_basket_by_submission(db, user, prv_year, prv_week)
 
         week_submitted = False
         if user["role"] == "manager" and user["store_id"]:
@@ -129,39 +181,42 @@ async def get_summary(
                 Submission.store_id == user["store_id"],
                 extract("isoyear", Submission.week_start) == cur_year,
                 extract("week",    Submission.week_start) == cur_week,
+                Submission.status == "active",
             ).first()
             week_submitted = submission is not None
 
         user_profile = db.query(User).filter(User.id == user["id"]).first()
         user_name = user_profile.username if user_profile else None
 
-        store_name = None
+        store_name     = None
         store_location = None
         if user["store_id"]:
-            store = db.query(Store).filter(Store.store_id == user["store_id"]).first()
+            store = db.query(Store).filter(
+                Store.store_id == user["store_id"]
+            ).first()
             if store:
-                store_name = store.store_name
+                store_name     = store.store_name
                 store_location = store.location
 
         return {
-            "total_revenue": total_revenue,
-            "total_transactions": total_transactions,
-            "avg_basket": avg_basket,
-            "stock_alert_count": stock_alert_count,
-            "week_number": cur_week,
-            "week_label": week_label(cur_year, cur_week),
-            "week_submitted": week_submitted,
-            "week_revenue": cur_revenue,
-            "week_transactions": cur_transactions,
-            "week_avg_basket": cur_avg_basket,
-            "revenue_delta_pct": pct_change(cur_revenue, prv_revenue),
+            "total_revenue":          total_revenue,
+            "total_transactions":     total_transactions,
+            "avg_basket":             avg_basket,
+            "stock_alert_count":      stock_alert_count,
+            "week_number":            cur_week,
+            "week_label":             week_label(cur_year, cur_week),
+            "week_submitted":         week_submitted,
+            "week_revenue":           cur_revenue,
+            "week_transactions":      cur_transactions,
+            "week_avg_basket":        cur_avg_basket,
+            "revenue_delta_pct":      pct_change(cur_revenue, prv_revenue),
             "transactions_delta_pct": pct_change(cur_transactions, prv_transactions),
-            "avg_basket_delta_pct": pct_change(cur_avg_basket, prv_avg_basket),
-            "store_id": user["store_id"],
-            "store_name": store_name,
-            "store_location": store_location,
-            "user_name": user_name,
-            "role": user["role"],
+            "avg_basket_delta_pct":   pct_change(cur_avg_basket, prv_avg_basket),
+            "store_id":               user["store_id"],
+            "store_name":             store_name,
+            "store_location":         store_location,
+            "user_name":              user_name,
+            "role":                   user["role"],
         }
 
     except HTTPException:
@@ -170,36 +225,55 @@ async def get_summary(
         logger.error(f"Dashboard summary error: {e}")
         raise HTTPException(status_code=500, detail="Failed to load dashboard summary")
 
-
+# ── /revenue-trend ────────────────────────────────────────
 @router.get("/revenue-trend")
 async def get_revenue_trend(
     db: Session = Depends(get_db),
     user=Depends(get_current_user)
 ):
     try:
-        iso_year = extract("isoyear", Transaction.transaction_date).label("iso_year")
-        iso_week = extract("week", Transaction.transaction_date).label("iso_week")
+        cur_year, cur_week = get_current_iso_week()
 
-        query = db.query(
-            iso_year,
-            iso_week,
-            func.sum(Transaction.total_price).label("revenue"),
+        cutoff_year, cutoff_week = cur_year, cur_week
+        for _ in range(8):
+            cutoff_year, cutoff_week = prev_iso_week(cutoff_year, cutoff_week)
+
+        period_year = extract("isoyear", Submission.week_start).label("period_year")
+        period_week = extract("week",    Submission.week_start).label("period_week")
+
+        query = (
+            db.query(
+                period_year,
+                period_week,
+                func.sum(Transaction.total_price).label("revenue"),
+            )
+            .join(Submission, Submission.submission_id == Transaction.submission_id)
+            .filter(
+                Submission.status == "active",
+                (extract("isoyear", Submission.week_start) > cutoff_year) |
+                (
+                    (extract("isoyear", Submission.week_start) == cutoff_year) &
+                    (extract("week",    Submission.week_start) >= cutoff_week)
+                )
+            )
         )
-        query = apply_store_filter(query, user)
+
+        if user["role"] == "manager":
+            if not user["store_id"]:
+                raise HTTPException(status_code=403, detail="No store assigned")
+            query = query.filter(Transaction.store_id == user["store_id"])
 
         results = (
             query
-            .group_by(iso_year, iso_week)
-            .order_by(iso_year, iso_week)
+            .group_by(period_year, period_week)
+            .order_by(period_year, period_week)
             .all()
         )
-
-        results = results[-8:]
 
         return {
             "data": [
                 {
-                    "date": f"W{int(row.iso_week)}",
+                    "date":    f"W{int(row.period_week)}",
                     "revenue": float(row.revenue),
                 }
                 for row in results
@@ -213,6 +287,7 @@ async def get_revenue_trend(
         raise HTTPException(status_code=500, detail="Failed to load revenue trend")
 
 
+# ── /ops-summary ──────────────────────────────────────────
 @router.get("/ops-summary")
 async def get_ops_summary(
     db: Session = Depends(get_db),
@@ -230,13 +305,8 @@ async def get_ops_summary(
             cur_year, cur_week = get_current_iso_week()
 
         prv_year, prv_week = prev_iso_week(cur_year, cur_week)
-
         stores = db.query(Store).all()
 
-        # ── KEY FIX: join through submissions so we aggregate by submission
-        # week (period_year/period_week), not transaction_date week.
-        # This means "Week 24" on the ops page shows data from any submission
-        # tagged as Week 24, regardless of what dates the transactions carry.
         store_revenues = (
             db.query(
                 Transaction.store_id,
@@ -253,7 +323,7 @@ async def get_ops_summary(
             .all()
         )
         rev_map  = {r.store_id: float(r.revenue) for r in store_revenues}
-        txns_map = {r.store_id: int(r.txns)     for r in store_revenues}
+        txns_map = {r.store_id: int(r.txns)      for r in store_revenues}
 
         prv_txns_total = (
             db.query(func.count(Transaction.transaction_id))
@@ -274,7 +344,9 @@ async def get_ops_summary(
         ).all()
         sub_map = {s.store_id: s for s in submissions}
 
-        max_revenue = max((rev_map.get(s.store_id, 0) for s in stores), default=1) or 1
+        max_revenue = max(
+            (rev_map.get(s.store_id, 0) for s in stores), default=1
+        ) or 1
 
         store_stats = []
         for store in stores:
@@ -293,9 +365,14 @@ async def get_ops_summary(
 
         store_stats.sort(key=lambda x: x["week_revenue"], reverse=True)
 
-        top = store_stats[0] if store_stats else None
-        avg_rev = (sum(s["week_revenue"] for s in store_stats) / len(store_stats)) if store_stats else 0
-        top_vs_avg = round(((top["week_revenue"] - avg_rev) / avg_rev) * 100, 1) if top and avg_rev > 0 else None
+        top     = store_stats[0] if store_stats else None
+        avg_rev = (
+            sum(s["week_revenue"] for s in store_stats) / len(store_stats)
+        ) if store_stats else 0
+        top_vs_avg = (
+            round(((top["week_revenue"] - avg_rev) / avg_rev) * 100, 1)
+            if top and avg_rev > 0 else None
+        )
 
         pending_stores = [s["store_name"] for s in store_stats if not s["submitted"]]
 
@@ -320,64 +397,43 @@ async def get_ops_summary(
         raise HTTPException(status_code=500, detail="Failed to load ops summary")
 
 
-def iso_weeks_in_year(year: int) -> int:
-    jan1_dow = date(year, 1, 1).weekday()
-    dec31_dow = date(year, 12, 31).weekday()
-    return 53 if jan1_dow == 3 or dec31_dow == 3 else 52
-
-
-def _all_weeks_between(
-    start_year: int, start_week: int,
-    end_year: int,   end_week: int,
-) -> list[tuple[int, int]]:
-    weeks = []
-    y, w = end_year, end_week
-    while (y, w) >= (start_year, start_week):
-        weeks.append((y, w))
-        w -= 1
-        if w == 0:
-            y -= 1
-            w = iso_weeks_in_year(y)
-    return weeks
-
-
+# ── /available-weeks ──────────────────────────────────────
 @router.get("/available-weeks")
 async def get_available_weeks(
-        db: Session = Depends(get_db),
-        user=Depends(get_current_user),
+    db: Session = Depends(get_db),
+    user=Depends(get_current_user),
+    mode: str = "submitted",  # "submitted" = weeks with data | "all" = every week up to now
 ):
     if user["role"] not in ["ops", "manager"]:
         raise HTTPException(status_code=403, detail="Access denied")
 
     try:
-        query = db.query(
-            extract("isoyear", Transaction.transaction_date).label("iso_year"),
-            extract("week", Transaction.transaction_date).label("iso_week"),
-        )
-        query = apply_store_filter(query, user)
-
-        earliest = (
-            query
-            .order_by(
-                extract("isoyear", Transaction.transaction_date).asc().nulls_last(),
-                extract("week", Transaction.transaction_date).asc().nulls_last(),
-            )
-            .first()
-        )
-
         cur_year, cur_week = get_current_iso_week()
 
-        if earliest is None or earliest.iso_year is None:
-            return {
-                "weeks": [{
-                    "iso_year": cur_year,
-                    "iso_week": cur_week,
-                    "week_label": week_label(cur_year, cur_week) + " (current)",
-                }]
-            }
+        if mode == "all":
+            # Upload page — show every week from W1 of current year to now
+            start_year = cur_year
+            start_week = 1
+        else:
+            # Dashboard jump-to — only weeks that have actual submission data
+            query = db.query(Submission).filter(Submission.status == "active")
+            if user["role"] == "manager" and user["store_id"]:
+                query = query.filter(Submission.store_id == user["store_id"])
 
-        start_year = int(earliest.iso_year)
-        start_week = int(earliest.iso_week)
+            earliest = query.order_by(Submission.week_start.asc()).first()
+
+            if earliest is None:
+                return {
+                    "weeks": [{
+                        "iso_year":   cur_year,
+                        "iso_week":   cur_week,
+                        "week_label": week_label(cur_year, cur_week) + " (current)",
+                    }]
+                }
+
+            start_iso  = earliest.week_start.isocalendar()
+            start_year = start_iso[0]
+            start_week = start_iso[1]
 
         all_pairs = _all_weeks_between(start_year, start_week, cur_year, cur_week)
 
@@ -397,18 +453,39 @@ async def get_available_weeks(
         raise HTTPException(status_code=500, detail="Failed to load available weeks")
 
 
+# ── /top-products ─────────────────────────────────────────
 @router.get("/top-products")
 async def get_top_products(
     db: Session = Depends(get_db),
-    user=Depends(get_current_user)
+    user=Depends(get_current_user),
+    iso_year: int | None = None,
+    iso_week: int | None = None,
 ):
+    if iso_year and iso_week:
+        cur_year, cur_week = iso_year, iso_week
+    else:
+        cur_year, cur_week = get_current_iso_week()
+
+
     try:
-        query = db.query(
-            Transaction.product_id,
-            Product.product_name,
-            func.sum(Transaction.total_price).label("total_revenue"),
-            func.sum(Transaction.quantity).label("total_units"),
-        ).join(Product, Product.product_id == Transaction.product_id)
+        query = (
+            db.query(
+                Transaction.product_id,
+                Product.product_name,
+                func.sum(Transaction.total_price).label("total_revenue"),
+                func.sum(Transaction.quantity).label("total_units"),
+            )
+            .join(Product, Product.product_id == Transaction.product_id)
+            .join(
+                Submission,
+                Submission.submission_id == Transaction.submission_id
+            )
+            .filter(
+                extract("isoyear", Submission.week_start) == cur_year,
+                extract("week", Submission.week_start) == cur_week,
+                Submission.status == "active",
+            )
+        )
 
         query = apply_store_filter(query, user)
 
