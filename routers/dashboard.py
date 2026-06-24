@@ -454,6 +454,7 @@ async def get_available_weeks(
 
 
 # ── /top-products ─────────────────────────────────────────
+# ── /top-products ─────────────────────────────────────────
 @router.get("/top-products")
 async def get_top_products(
     db: Session = Depends(get_db),
@@ -465,7 +466,6 @@ async def get_top_products(
         cur_year, cur_week = iso_year, iso_week
     else:
         cur_year, cur_week = get_current_iso_week()
-
 
     try:
         query = (
@@ -514,3 +514,107 @@ async def get_top_products(
     except Exception as e:
         logger.error(f"Top products error: {e}")
         raise HTTPException(status_code=500, detail="Failed to load top products")
+
+
+# ── /inventory-alerts ─────────────────────────────────────
+@router.get("/inventory-alerts")
+async def get_inventory_alerts(
+    db: Session = Depends(get_db),
+    user=Depends(get_current_user)
+):
+    if user["role"] == "manager" and not user["store_id"]:
+        raise HTTPException(status_code=403, detail="No store assigned to this account")
+    if user["role"] not in ("manager", "ops"):
+        raise HTTPException(status_code=403, detail="Access denied")
+
+    try:
+        query = (
+            db.query(
+                Inventory.inventory_id,
+                Inventory.stock_quantity,
+                Inventory.reorder_level,
+                Product.product_name,
+                Product.category,
+                Product.unit_price,
+                Store.store_id.label("store_id"),
+                Store.store_name.label("store_name"),
+                Store.location.label("store_location"),
+            )
+            .join(Product, Product.product_id == Inventory.product_id)
+            .join(Store, Store.store_id == Inventory.store_id)
+            .filter(Inventory.stock_quantity <= Inventory.reorder_level)
+        )
+
+        all_inventory_query = db.query(func.count(Inventory.inventory_id))
+
+        if user["role"] == "manager":
+            query = query.filter(Inventory.store_id == user["store_id"])
+            all_inventory_query = all_inventory_query.filter(
+                Inventory.store_id == user["store_id"]
+            )
+
+        results = query.order_by(
+            (Inventory.reorder_level - Inventory.stock_quantity).desc()
+        ).all()
+
+        all_inventory = all_inventory_query.scalar() or 0
+
+        return {
+            "alerts": [
+                {
+                    "inventory_id": row.inventory_id,
+                    "product_name": row.product_name,
+                    "category": row.category,
+                    "unit_price": float(row.unit_price),
+                    "stock_quantity": row.stock_quantity,
+                    "reorder_level": row.reorder_level,
+                    "shortfall": row.reorder_level - row.stock_quantity,
+                    "store_id": row.store_id,
+                    "store_name": row.store_name,
+                    "store_location": row.store_location,
+                }
+                for row in results
+            ],
+            "total_alerts": len(results),
+            "total_products": int(all_inventory),
+        }
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Inventory alerts error: {e}")
+        raise HTTPException(status_code=500, detail="Failed to load inventory alerts")
+
+
+# ── /profile (NOW CORRECTLY SEPARATED OUT) ─────────────────
+# ── /profile ──────────────────────────────────────────────
+@router.get("/profile")
+async def get_profile(
+    db: Session = Depends(get_db),
+    user=Depends(get_current_user)
+):
+    try:
+        user_profile = db.query(User).filter(User.id == user["id"]).first()
+        if not user_profile:
+            raise HTTPException(status_code=404, detail="User not found")
+
+        store_name = None
+        store_location = None
+        if user["store_id"]:
+            store = db.query(Store).filter(Store.store_id == user["store_id"]).first()
+            if store:
+                store_name = store.store_name
+                store_location = store.location
+
+        return {
+            "username": user_profile.username,
+            # REMOVED: user_profile.email (since it doesn't exist on the User model)
+            "role": user["role"],
+            "store_name": store_name,
+            "location": store_location,
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Profile retrieval error: {e}")
+        raise HTTPException(status_code=500, detail="Failed to load profile settings")

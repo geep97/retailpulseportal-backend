@@ -28,6 +28,11 @@ class CreateUserRequest(BaseModel):
     username: str
 
 
+# Pydantic schema for password changes
+class UpdatePasswordRequest(BaseModel):
+    new_password: str
+
+
 async def get_current_user(
         request: Request,
         db: Session = Depends(get_db)
@@ -72,9 +77,11 @@ def role_required(*roles):
         return user
     return Depends(checker)
 
+
 @router.get("/me")
 async def get_me(user=Depends(get_current_user)):
     return user
+
 
 @router.post("/login")
 async def login(credentials: LoginRequest, response: Response, db: Session = Depends(get_db)):
@@ -163,3 +170,25 @@ async def create_user(
         db.rollback()
         logger.error(f"User creation error: {e}")
         raise HTTPException(status_code=400, detail="Failed to create user.")
+
+
+# FIXED: Moved outside create_user to be its own independent endpoint
+@router.post("/update-password")
+async def update_password(
+        data: UpdatePasswordRequest,
+        current_user=Depends(get_current_user)
+):
+    try:
+        # Use the admin client and target the user by id explicitly.
+        # supabase.auth.update_user() relies on a session stored on the
+        # client instance itself, but `supabase` is a single shared client
+        # used by every request — it never has a per-user session set,
+        # which is why this raised "Auth session missing!".
+        admin_supabase.auth.admin.update_user_by_id(
+            current_user["id"],
+            {"password": data.new_password}
+        )
+        return {"message": "Password updated successfully"}
+    except Exception as e:
+        logger.error(f"Password update error for user {current_user['email']}: {e}")
+        raise HTTPException(status_code=400, detail="Failed to update password.")
