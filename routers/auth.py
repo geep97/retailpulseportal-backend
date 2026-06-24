@@ -5,6 +5,9 @@ from models import User
 from sqlalchemy.orm import Session
 from typing import Literal
 import logging
+import os
+IS_PRODUCTION = os.getenv("ENVIRONMENT") == "production"
+
 
 logger = logging.getLogger(__name__)
 
@@ -93,8 +96,8 @@ async def login(credentials: LoginRequest, response: Response, db: Session = Dep
             key=COOKIE_NAME,
             value=auth_response.session.access_token,
             httponly=True,
-            secure=False,
-            samesite="lax",
+            secure=IS_PRODUCTION,
+            samesite="none" if IS_PRODUCTION else "lax",
             max_age=3600,
         )
 

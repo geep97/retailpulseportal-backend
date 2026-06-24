@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/api", tags=["Data Ingestion Pipeline"])
 
-# ── MASTER TEMPLATE ─────────────────────────────────────────
+
 REQUIRED_COLUMNS = {
     "transaction_id", "transaction_date", "product_name",
     "category", "quantity", "unit_price", "payment_method"
@@ -29,7 +29,7 @@ VALID_CATEGORIES = {
 VALID_PAYMENT_METHODS = {"Cash", "Mobile Money", "Bank Card", "Credit"}
 
 
-# ── STEP 1: SCHEMA ALIGNMENT ────────────────────────────────
+
 def align_schema(df: pd.DataFrame) -> pd.DataFrame:
 
     df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
@@ -281,7 +281,7 @@ async def upload_weekly_ledger(
         db: Session = Depends(get_db),
         user=Depends(get_current_user)
 ):
-    # RBAC — managers only
+
     if user["role"] != "manager":
         raise HTTPException(
             status_code=403,
