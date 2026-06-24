@@ -1,15 +1,18 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routers import ingestion, auth, dashboard
-import os
 
 app = FastAPI(title="RetailPulse Portal Core Engine")
 
-FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:5173")
+
+origins = [
+    "http://localhost:5173",
+    "https://retailpulseportal-frontend-r34v7k773-geep97s-projects.vercel.app"
+]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[FRONTEND_URL],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
