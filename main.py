@@ -7,6 +7,7 @@ app = FastAPI(title="RetailPulse Portal Core Engine")
 # Exact origins allowed
 origins = [
     "http://localhost:5173",
+    "https://retailpulseportal-frontend.vercel.app",
     "https://retailpulseportal-frontend-r34v7k773-geep97s-projects.vercel.app",
     "https://retailpulseportal-frontend-s4hup561v-geep97s-projects.vercel.app"
 ]
