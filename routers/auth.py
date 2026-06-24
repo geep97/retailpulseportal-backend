@@ -119,7 +119,11 @@ async def login(credentials: LoginRequest, response: Response, db: Session = Dep
 
 @router.post("/logout")
 async def logout(response: Response):
-    response.delete_cookie(key=COOKIE_NAME, samesite="lax")
+    response.delete_cookie(
+        key=COOKIE_NAME,
+        secure=True,
+        samesite="none"
+    )
     return {"message": "Logged out"}
 
 
