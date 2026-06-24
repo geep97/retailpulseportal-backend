@@ -103,8 +103,8 @@ async def login(credentials: LoginRequest, response: Response, db: Session = Dep
             key=COOKIE_NAME,
             value=auth_response.session.access_token,
             httponly=True,
-            secure=IS_PRODUCTION,
-            samesite="none" if IS_PRODUCTION else "lax",
+            secure=True,  # Force True
+            samesite="none",  # Force "none"
             max_age=3600,
         )
 
