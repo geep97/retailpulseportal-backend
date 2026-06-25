@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, Depends, Request, Response
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from database import supabase, admin_supabase, get_db
 from models import User
 from sqlalchemy.orm import Session
@@ -23,14 +23,14 @@ class LoginRequest(BaseModel):
 
 class CreateUserRequest(BaseModel):
     email: str
-    password: str
+    password: str = Field(min_length=6)
     role: Literal["ops", "manager"]
     username: str
 
 
 # Pydantic schema for password changes
 class UpdatePasswordRequest(BaseModel):
-    new_password: str
+    new_password: str = Field(min_length=6)
 
 
 async def get_current_user(
@@ -76,11 +76,6 @@ def role_required(*roles):
             raise HTTPException(status_code=403, detail="You do not have permission to perform this action")
         return user
     return Depends(checker)
-
-
-@router.get("/me")
-async def get_me(user=Depends(get_current_user)):
-    return user
 
 
 @router.post("/login")
