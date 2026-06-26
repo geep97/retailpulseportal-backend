@@ -1,9 +1,9 @@
 from fastapi import APIRouter, HTTPException, Depends, Request, Response
 from pydantic import BaseModel, Field
 from database import supabase, admin_supabase, get_db
-from models import User
+from models import User, Store
 from sqlalchemy.orm import Session
-from typing import Literal
+from typing import Literal, Optional
 import logging
 import os
 IS_PRODUCTION = os.getenv("ENVIRONMENT") == "production"
@@ -26,6 +26,8 @@ class CreateUserRequest(BaseModel):
     password: str = Field(min_length=6)
     role: Literal["ops", "manager"]
     username: str
+    store_id: Optional[int] = None
+    confirm_replace: bool = False
 
 
 # Pydantic schema for password changes
@@ -55,6 +57,9 @@ async def get_current_user(
 
         if not profile:
             raise HTTPException(status_code=404, detail="Profile not found")
+
+        if not profile.is_active:
+            raise HTTPException(status_code=403, detail="This account has been deactivated.")
 
         return {
             "id": str(supabase_user.id),
@@ -92,6 +97,9 @@ async def login(credentials: LoginRequest, response: Response, db: Session = Dep
 
         if not user_profile:
             raise HTTPException(status_code=404, detail="User profile not found in database")
+
+        if not user_profile.is_active:
+            raise HTTPException(status_code=403, detail="This account has been deactivated. Contact your administrator.")
 
         # Set httpOnly cookie
         response.set_cookie(
@@ -134,6 +142,33 @@ async def create_user(
             if existing_ops >= 1:
                 raise HTTPException(status_code=400, detail="An ops user already exists. Only one ops user is allowed.")
 
+        existing_manager = None
+        if user_data.role == "manager":
+            if not user_data.store_id:
+                raise HTTPException(status_code=400, detail="A store must be assigned to a manager account.")
+            store = db.query(Store).filter(Store.store_id == user_data.store_id).first()
+            if not store:
+                raise HTTPException(status_code=400, detail="Selected store does not exist.")
+
+            existing_manager = db.query(User).filter(
+                User.store_id == user_data.store_id,
+                User.role == "manager",
+                User.is_active == True,
+            ).first()
+
+            if existing_manager and not user_data.confirm_replace:
+                return {
+                    "status": "manager_exists",
+                    "message": (
+                        f"{store.store_name} already has an active manager "
+                        f"({existing_manager.username}). Replacing them will "
+                        f"deactivate their account and they will no longer be "
+                        f"able to log in."
+                    ),
+                    "existing_manager_username": existing_manager.username,
+                    "store_name": store.store_name,
+                }
+
         response = admin_supabase.auth.admin.create_user({
             "email": user_data.email,
             "password": user_data.password,
@@ -142,26 +177,38 @@ async def create_user(
 
         auth_id = str(response.user.id)
 
+        # Deactivate the prior manager only after the new account is
+        # successfully created — avoids leaving the store with zero
+        # active managers if account creation fails partway through.
+        if existing_manager and user_data.confirm_replace:
+            existing_manager.is_active = False
+            existing_manager.store_id = None
+            db.flush()
+
         profile = db.query(User).filter(User.id == auth_id).first()
 
         if profile:
             profile.auth_provider_id = auth_id
             profile.username = user_data.username
             profile.role = user_data.role
+            profile.store_id = user_data.store_id if user_data.role == "manager" else None
+            profile.is_active = True
             db.commit()
-            return {"message": "Existing profile updated", "user": response.user}
+            return {"status": "success", "message": "Existing profile updated", "user": response.user}
 
         new_profile = User(
             id=auth_id,
             username=user_data.username,
             role=user_data.role,
-            auth_provider_id=auth_id
+            auth_provider_id=auth_id,
+            store_id=user_data.store_id if user_data.role == "manager" else None,
+            is_active=True,
         )
         db.add(new_profile)
         db.commit()
         db.refresh(new_profile)
 
-        return {"message": "User created successfully", "user": response.user}
+        return {"status": "success", "message": "User created successfully", "user": response.user}
 
     except HTTPException:
         raise
@@ -191,3 +238,48 @@ async def update_password(
     except Exception as e:
         logger.error(f"Password update error for user {current_user['email']}: {e}")
         raise HTTPException(status_code=400, detail="Failed to update password.")
+
+
+@router.get("/admin/stores")
+async def list_stores(
+        db: Session = Depends(get_db),
+        current_user=role_required("ops")
+):
+    stores = db.query(Store).order_by(Store.store_name).all()
+    return {
+        "stores": [
+            {
+                "store_id": s.store_id,
+                "store_name": s.store_name,
+                "location": s.location,
+            }
+            for s in stores
+        ]
+    }
+
+
+@router.get("/admin/users")
+async def list_users(
+        db: Session = Depends(get_db),
+        current_user=role_required("ops")
+):
+    rows = (
+        db.query(User, Store.store_name, Store.location)
+        .outerjoin(Store, Store.store_id == User.store_id)
+        .filter(User.is_active == True)
+        .order_by(User.role, User.username)
+        .all()
+    )
+    return {
+        "users": [
+            {
+                "id": u.id,
+                "username": u.username,
+                "role": u.role,
+                "store_id": u.store_id,
+                "store_name": store_name,
+                "store_location": store_location,
+            }
+            for u, store_name, store_location in rows
+        ]
+    }

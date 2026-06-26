@@ -415,8 +415,14 @@ async def get_available_weeks(
             start_year = cur_year
             start_week = 1
         else:
-            # Dashboard jump-to — only weeks that have actual submission data
-            query = db.query(Submission).filter(Submission.status == "active")
+            # Dashboard jump-to — only weeks that have actual submission data.
+            # week_start is NULL for annual baseline submissions (e.g. "2023
+            # Historical Baseline" rows), which don't represent a specific
+            # week — exclude those or isocalendar() below crashes on None.
+            query = db.query(Submission).filter(
+                Submission.status == "active",
+                Submission.week_start.isnot(None),
+            )
             if user["role"] == "manager" and user["store_id"]:
                 query = query.filter(Submission.store_id == user["store_id"])
 
@@ -453,7 +459,6 @@ async def get_available_weeks(
         raise HTTPException(status_code=500, detail="Failed to load available weeks")
 
 
-# ── /top-products ─────────────────────────────────────────
 # ── /top-products ─────────────────────────────────────────
 @router.get("/top-products")
 async def get_top_products(
@@ -586,7 +591,6 @@ async def get_inventory_alerts(
         raise HTTPException(status_code=500, detail="Failed to load inventory alerts")
 
 
-# ── /profile (NOW CORRECTLY SEPARATED OUT) ─────────────────
 # ── /profile ──────────────────────────────────────────────
 @router.get("/profile")
 async def get_profile(
@@ -608,7 +612,6 @@ async def get_profile(
 
         return {
             "username": user_profile.username,
-            # REMOVED: user_profile.email (since it doesn't exist on the User model)
             "role": user["role"],
             "store_name": store_name,
             "location": store_location,

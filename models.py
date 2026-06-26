@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, TIMESTAMP, Date, Numeric, Text, func
+from sqlalchemy import Column, Integer, String, TIMESTAMP, Date, Numeric, Text, Boolean, func
 from database import Base
 
 
@@ -8,6 +8,7 @@ class User(Base):
     username = Column(String, nullable=False)
     role = Column(String, nullable=False)
     store_id = Column(Integer, nullable=True)
+    is_active = Column(Boolean, nullable=False, server_default="true")
     updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.now())
     auth_provider_id = Column(String, nullable=True)
 
