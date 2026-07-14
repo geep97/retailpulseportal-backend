@@ -273,7 +273,7 @@ def write_to_database(
 
 # ── MAIN UPLOAD ENDPOINT ─────────────────────────────────────
 @router.post("/upload")
-async def upload_weekly_ledger(
+def upload_weekly_ledger(
         iso_year: int = Form(...),
         iso_week: int = Form(...),
         confirm_replace: bool = Form(default=False),
@@ -304,7 +304,7 @@ async def upload_weekly_ledger(
         )
 
     try:
-        contents = await file.read()
+        contents = file.file.read()
 
         # ── STEP 1: Try to read the file ──────────────────────
         try:

@@ -35,7 +35,7 @@ class UpdatePasswordRequest(BaseModel):
     new_password: str = Field(min_length=6)
 
 
-async def get_current_user(
+def get_current_user(
         request: Request,
         db: Session = Depends(get_db)
 ):
@@ -76,7 +76,7 @@ async def get_current_user(
 
 
 def role_required(*roles):
-    async def checker(user=Depends(get_current_user)):
+    def checker(user=Depends(get_current_user)):
         if user["role"] not in roles:
             raise HTTPException(status_code=403, detail="You do not have permission to perform this action")
         return user
@@ -84,7 +84,7 @@ def role_required(*roles):
 
 
 @router.post("/login")
-async def login(credentials: LoginRequest, response: Response, db: Session = Depends(get_db)):
+def login(credentials: LoginRequest, response: Response, db: Session = Depends(get_db)):
     try:
         auth_response = supabase.auth.sign_in_with_password({
             "email": credentials.email,
@@ -121,7 +121,7 @@ async def login(credentials: LoginRequest, response: Response, db: Session = Dep
 
 
 @router.post("/logout")
-async def logout(response: Response):
+def logout(response: Response):
     response.delete_cookie(
         key=COOKIE_NAME,
         secure=True,
@@ -131,7 +131,7 @@ async def logout(response: Response):
 
 
 @router.post("/admin/create-user")
-async def create_user(
+def create_user(
         user_data: CreateUserRequest,
         db: Session = Depends(get_db),
         current_user=role_required("ops")
@@ -177,9 +177,7 @@ async def create_user(
 
         auth_id = str(response.user.id)
 
-        # Deactivate the prior manager only after the new account is
-        # successfully created — avoids leaving the store with zero
-        # active managers if account creation fails partway through.
+
         if existing_manager and user_data.confirm_replace:
             existing_manager.is_active = False
             existing_manager.store_id = None
@@ -220,16 +218,12 @@ async def create_user(
 
 # FIXED: Moved outside create_user to be its own independent endpoint
 @router.post("/update-password")
-async def update_password(
+def update_password(
         data: UpdatePasswordRequest,
         current_user=Depends(get_current_user)
 ):
     try:
-        # Use the admin client and target the user by id explicitly.
-        # supabase.auth.update_user() relies on a session stored on the
-        # client instance itself, but `supabase` is a single shared client
-        # used by every request — it never has a per-user session set,
-        # which is why this raised "Auth session missing!".
+
         admin_supabase.auth.admin.update_user_by_id(
             current_user["id"],
             {"password": data.new_password}
@@ -241,7 +235,7 @@ async def update_password(
 
 
 @router.get("/admin/stores")
-async def list_stores(
+def list_stores(
         db: Session = Depends(get_db),
         current_user=role_required("ops")
 ):
@@ -259,7 +253,7 @@ async def list_stores(
 
 
 @router.get("/admin/users")
-async def list_users(
+def list_users(
         db: Session = Depends(get_db),
         current_user=role_required("ops")
 ):

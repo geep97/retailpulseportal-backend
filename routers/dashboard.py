@@ -12,20 +12,18 @@ logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/dashboard", tags=["Dashboard"])
 
 
-def apply_store_filter(query, user):
+# ────────────────────────────────────────────────────────────
+# Access control
+# ────────────────────────────────────────────────────────────
+
+def apply_role_filter(query, user, model):
     if user["role"] == "manager":
         if not user["store_id"]:
             raise HTTPException(status_code=403, detail="No store assigned to this account")
-        return query.filter(Transaction.store_id == user["store_id"])
+        return query.filter(model.store_id == user["store_id"])
     return query
 
 
-def apply_inventory_store_filter(query, user):
-    if user["role"] == "manager":
-        if not user["store_id"]:
-            raise HTTPException(status_code=403, detail="No store assigned to this account")
-        return query.filter(Inventory.store_id == user["store_id"])
-    return query
 
 
 def get_current_iso_week() -> tuple[int, int]:
@@ -48,12 +46,6 @@ def iso_weeks_in_year(year: int) -> int:
     return 53 if jan1_dow == 3 or dec31_dow == 3 else 52
 
 
-def pct_change(current: float, previous: float) -> float | None:
-    if previous == 0:
-        return None
-    return round(((current - previous) / previous) * 100, 1)
-
-
 def week_label(iso_year: int, iso_week: int) -> str:
     jan4 = date(iso_year, 1, 4)
     monday = jan4 + timedelta(weeks=iso_week - 1) - timedelta(days=jan4.weekday())
@@ -61,55 +53,10 @@ def week_label(iso_year: int, iso_week: int) -> str:
     return f"Week {iso_week} · {month_name}"
 
 
-def get_week_revenue_by_submission(
-    db: Session, user: dict, iso_year: int, iso_week: int
-) -> float:
-    query = (
-        db.query(func.sum(Transaction.total_price))
-        .join(Submission, Submission.submission_id == Transaction.submission_id)
-        .filter(
-            extract("isoyear", Submission.week_start) == iso_year,
-            extract("week",    Submission.week_start) == iso_week,
-            Submission.status == "active",
-        )
-    )
-    if user["role"] == "manager":
-        query = query.filter(Transaction.store_id == user["store_id"])
-    return float(query.scalar() or 0)
-
-
-def get_week_transactions_by_submission(
-    db: Session, user: dict, iso_year: int, iso_week: int
-) -> int:
-    query = (
-        db.query(func.count(Transaction.transaction_id))
-        .join(Submission, Submission.submission_id == Transaction.submission_id)
-        .filter(
-            extract("isoyear", Submission.week_start) == iso_year,
-            extract("week",    Submission.week_start) == iso_week,
-            Submission.status == "active",
-        )
-    )
-    if user["role"] == "manager":
-        query = query.filter(Transaction.store_id == user["store_id"])
-    return int(query.scalar() or 0)
-
-
-def get_week_avg_basket_by_submission(
-    db: Session, user: dict, iso_year: int, iso_week: int
-) -> float:
-    query = (
-        db.query(func.avg(Transaction.total_price))
-        .join(Submission, Submission.submission_id == Transaction.submission_id)
-        .filter(
-            extract("isoyear", Submission.week_start) == iso_year,
-            extract("week",    Submission.week_start) == iso_week,
-            Submission.status == "active",
-        )
-    )
-    if user["role"] == "manager":
-        query = query.filter(Transaction.store_id == user["store_id"])
-    return float(round(query.scalar() or 0, 2))
+def resolve_week(iso_year: int | None, iso_week: int | None) -> tuple[int, int]:
+    if iso_year and iso_week:
+        return iso_year, iso_week
+    return get_current_iso_week()
 
 
 def _all_weeks_between(
@@ -127,54 +74,99 @@ def _all_weeks_between(
     return weeks
 
 
+# ────────────────────────────────────────────────────────────
+# Metrics
+# ────────────────────────────────────────────────────────────
+
+def pct_change(current: float, previous: float) -> float | None:
+    if previous == 0:
+        return None
+    return round(((current - previous) / previous) * 100, 1)
+
+
+def get_week_metric(db: Session, user: dict, iso_year: int, iso_week: int, agg_expr):
+    query = (
+        db.query(agg_expr)
+        .join(Submission, Submission.submission_id == Transaction.submission_id)
+        .filter(
+            extract("isoyear", Submission.week_start) == iso_year,
+            extract("week",    Submission.week_start) == iso_week,
+            Submission.status == "active",
+        )
+    )
+    query = apply_role_filter(query, user, Transaction)
+    return query.scalar() or 0
+
+
+def get_store_info(db: Session, store_id: int | None) -> tuple[str | None, str | None]:
+    if not store_id:
+        return None, None
+    store = db.query(Store).filter(Store.store_id == store_id).first()
+    if not store:
+        return None, None
+    return store.store_name, store.location
+
+
 # ── /me ──────────────────────────────────────────────────
 @router.get("/me")
-async def get_me(user=Depends(get_current_user)):
+def get_me(user=Depends(get_current_user)):
     return user
 
 
 # ── /summary ─────────────────────────────────────────────
 @router.get("/summary")
-async def get_summary(
+def get_summary(
     db: Session = Depends(get_db),
     user=Depends(get_current_user),
     iso_year: int | None = None,
     iso_week: int | None = None,
 ):
+
     try:
-        total_revenue_query = db.query(func.sum(Transaction.total_price))
-        total_revenue_query = apply_store_filter(total_revenue_query, user)
+        # All-time totals
+        total_revenue_query = apply_role_filter(
+            db.query(func.sum(Transaction.total_price)), user, Transaction
+        )
         total_revenue = float(total_revenue_query.scalar() or 0)
 
-        total_transactions_query = db.query(func.count(Transaction.transaction_id))
-        total_transactions_query = apply_store_filter(total_transactions_query, user)
+        total_transactions_query = apply_role_filter(
+            db.query(func.count(Transaction.transaction_id)), user, Transaction
+        )
         total_transactions = int(total_transactions_query.scalar() or 0)
 
-        avg_basket_query = db.query(func.avg(Transaction.total_price))
-        avg_basket_query = apply_store_filter(avg_basket_query, user)
+        avg_basket_query = apply_role_filter(
+            db.query(func.avg(Transaction.total_price)), user, Transaction
+        )
         avg_basket = float(round(avg_basket_query.scalar() or 0, 2))
 
-        stock_alert_query = db.query(func.count(Inventory.inventory_id)).filter(
-            Inventory.stock_quantity < Inventory.reorder_level
+        stock_alert_query = apply_role_filter(
+            db.query(func.count(Inventory.inventory_id)).filter(
+                Inventory.stock_quantity < Inventory.reorder_level
+            ),
+            user, Inventory,
         )
-        stock_alert_query = apply_inventory_store_filter(stock_alert_query, user)
         stock_alert_count = int(stock_alert_query.scalar() or 0)
 
-
-        if iso_year and iso_week:
-            cur_year, cur_week = iso_year, iso_week
-        else:
-            cur_year, cur_week = get_current_iso_week()
-
+        # This week vs last week
+        cur_year, cur_week = resolve_week(iso_year, iso_week)
         prv_year, prv_week = prev_iso_week(cur_year, cur_week)
 
-        cur_revenue      = get_week_revenue_by_submission(db, user, cur_year, cur_week)
-        prv_revenue      = get_week_revenue_by_submission(db, user, prv_year, prv_week)
-        cur_transactions = get_week_transactions_by_submission(db, user, cur_year, cur_week)
-        prv_transactions = get_week_transactions_by_submission(db, user, prv_year, prv_week)
-        cur_avg_basket   = get_week_avg_basket_by_submission(db, user, cur_year, cur_week)
-        prv_avg_basket   = get_week_avg_basket_by_submission(db, user, prv_year, prv_week)
+        cur_revenue = float(get_week_metric(
+            db, user, cur_year, cur_week, func.sum(Transaction.total_price)))
+        prv_revenue = float(get_week_metric(
+            db, user, prv_year, prv_week, func.sum(Transaction.total_price)))
 
+        cur_transactions = int(get_week_metric(
+            db, user, cur_year, cur_week, func.count(Transaction.transaction_id)))
+        prv_transactions = int(get_week_metric(
+            db, user, prv_year, prv_week, func.count(Transaction.transaction_id)))
+
+        cur_avg_basket = float(round(get_week_metric(
+            db, user, cur_year, cur_week, func.avg(Transaction.total_price)), 2))
+        prv_avg_basket = float(round(get_week_metric(
+            db, user, prv_year, prv_week, func.avg(Transaction.total_price)), 2))
+
+        # Has this store filed its submission for the current week yet?
         week_submitted = False
         if user["role"] == "manager" and user["store_id"]:
             submission = db.query(Submission).filter(
@@ -188,15 +180,7 @@ async def get_summary(
         user_profile = db.query(User).filter(User.id == user["id"]).first()
         user_name = user_profile.username if user_profile else None
 
-        store_name     = None
-        store_location = None
-        if user["store_id"]:
-            store = db.query(Store).filter(
-                Store.store_id == user["store_id"]
-            ).first()
-            if store:
-                store_name     = store.store_name
-                store_location = store.location
+        store_name, store_location = get_store_info(db, user["store_id"])
 
         return {
             "total_revenue":          total_revenue,
@@ -225,12 +209,14 @@ async def get_summary(
         logger.error(f"Dashboard summary error: {e}")
         raise HTTPException(status_code=500, detail="Failed to load dashboard summary")
 
+
 # ── /revenue-trend ────────────────────────────────────────
 @router.get("/revenue-trend")
-async def get_revenue_trend(
+def get_revenue_trend(
     db: Session = Depends(get_db),
     user=Depends(get_current_user)
 ):
+
     try:
         cur_year, cur_week = get_current_iso_week()
 
@@ -289,21 +275,18 @@ async def get_revenue_trend(
 
 # ── /ops-summary ──────────────────────────────────────────
 @router.get("/ops-summary")
-async def get_ops_summary(
+def get_ops_summary(
     db: Session = Depends(get_db),
     user=Depends(get_current_user),
     iso_year: int | None = None,
     iso_week: int | None = None,
 ):
+
     if user["role"] != "ops":
         raise HTTPException(status_code=403, detail="Ops only")
 
     try:
-        if iso_year and iso_week:
-            cur_year, cur_week = iso_year, iso_week
-        else:
-            cur_year, cur_week = get_current_iso_week()
-
+        cur_year, cur_week = resolve_week(iso_year, iso_week)
         prv_year, prv_week = prev_iso_week(cur_year, cur_week)
         stores = db.query(Store).all()
 
@@ -399,11 +382,12 @@ async def get_ops_summary(
 
 # ── /available-weeks ──────────────────────────────────────
 @router.get("/available-weeks")
-async def get_available_weeks(
+def get_available_weeks(
     db: Session = Depends(get_db),
     user=Depends(get_current_user),
     mode: str = "submitted",  # "submitted" = weeks with data | "all" = every week up to now
 ):
+
     if user["role"] not in ["ops", "manager"]:
         raise HTTPException(status_code=403, detail="Access denied")
 
@@ -411,14 +395,10 @@ async def get_available_weeks(
         cur_year, cur_week = get_current_iso_week()
 
         if mode == "all":
-            # Upload page — show every week from W1 of current year to now
             start_year = cur_year
             start_week = 1
         else:
-            # Dashboard jump-to — only weeks that have actual submission data.
-            # week_start is NULL for annual baseline submissions (e.g. "2023
-            # Historical Baseline" rows), which don't represent a specific
-            # week — exclude those or isocalendar() below crashes on None.
+
             query = db.query(Submission).filter(
                 Submission.status == "active",
                 Submission.week_start.isnot(None),
@@ -461,16 +441,14 @@ async def get_available_weeks(
 
 # ── /top-products ─────────────────────────────────────────
 @router.get("/top-products")
-async def get_top_products(
+def get_top_products(
     db: Session = Depends(get_db),
     user=Depends(get_current_user),
     iso_year: int | None = None,
     iso_week: int | None = None,
 ):
-    if iso_year and iso_week:
-        cur_year, cur_week = iso_year, iso_week
-    else:
-        cur_year, cur_week = get_current_iso_week()
+    """Top 5 products by revenue for a given week."""
+    cur_year, cur_week = resolve_week(iso_year, iso_week)
 
     try:
         query = (
@@ -492,7 +470,7 @@ async def get_top_products(
             )
         )
 
-        query = apply_store_filter(query, user)
+        query = apply_role_filter(query, user, Transaction)
 
         results = (
             query
@@ -523,10 +501,11 @@ async def get_top_products(
 
 # ── /inventory-alerts ─────────────────────────────────────
 @router.get("/inventory-alerts")
-async def get_inventory_alerts(
+def get_inventory_alerts(
     db: Session = Depends(get_db),
     user=Depends(get_current_user)
 ):
+
     if user["role"] == "manager" and not user["store_id"]:
         raise HTTPException(status_code=403, detail="No store assigned to this account")
     if user["role"] not in ("manager", "ops"):
@@ -593,22 +572,17 @@ async def get_inventory_alerts(
 
 # ── /profile ──────────────────────────────────────────────
 @router.get("/profile")
-async def get_profile(
+def get_profile(
     db: Session = Depends(get_db),
     user=Depends(get_current_user)
 ):
+
     try:
         user_profile = db.query(User).filter(User.id == user["id"]).first()
         if not user_profile:
             raise HTTPException(status_code=404, detail="User not found")
 
-        store_name = None
-        store_location = None
-        if user["store_id"]:
-            store = db.query(Store).filter(Store.store_id == user["store_id"]).first()
-            if store:
-                store_name = store.store_name
-                store_location = store.location
+        store_name, store_location = get_store_info(db, user["store_id"])
 
         return {
             "username": user_profile.username,
