@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import ingestion, auth, dashboard
+from .routers import ingestion, auth, dashboard
 
 app = FastAPI(title="RetailPulse Portal Core Engine")
 

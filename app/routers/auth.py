@@ -1,12 +1,12 @@
 from fastapi import APIRouter, HTTPException, Depends, Request, Response
 from pydantic import BaseModel, Field
-from app.database import supabase, admin_supabase, get_db
-from app.models import User, Store
+from ..database import supabase, admin_supabase, get_db
+from ..models import User, Store
 from sqlalchemy.orm import Session
 from typing import Optional
 import logging
 import os
-from app.enums import UserRole
+from ..enums import UserRole
 
 IS_PRODUCTION = os.getenv("ENVIRONMENT") == "production"
 
