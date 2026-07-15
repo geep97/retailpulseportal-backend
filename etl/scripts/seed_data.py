@@ -33,8 +33,8 @@ def seed_operational_master_records():
         # -------------------------------------------------------------------
         # 1. POPULATE CUSTOMERS TABLE
         # -------------------------------------------------------------------
-        print("\nReading customer data frames from data/cleaned_customers.csv...")
-        cust_df = pd.read_csv("data/cleaned_customers.csv")
+        print("\nReading customer data frames from cleaned_customers.csv...")
+        cust_df = pd.read_csv("../../fixtures/cleaned_customers.csv")
         
         cust_payloads = []
         for _, row in cust_df.iterrows():
@@ -60,7 +60,7 @@ def seed_operational_master_records():
         # 2. POPULATE INVENTORY TABLE
         # -------------------------------------------------------------------
         print("\nReading warehouse balance lists from data/cleaned_inventory.csv...")
-        inv_df = pd.read_csv("data/cleaned_inventory.csv")
+        inv_df = pd.read_csv("../../fixtures/cleaned_inventory.csv")
         
         print("Caching real-time relational ID indexes to prevent mapping lookups...")
         stores_res = supabase.table("stores").select("store_id, store_name").execute()

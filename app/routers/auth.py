@@ -1,11 +1,13 @@
 from fastapi import APIRouter, HTTPException, Depends, Request, Response
 from pydantic import BaseModel, Field
-from database import supabase, admin_supabase, get_db
-from models import User, Store
+from app.database import supabase, admin_supabase, get_db
+from app.models import User, Store
 from sqlalchemy.orm import Session
-from typing import Literal, Optional
+from typing import Optional
 import logging
 import os
+from app.enums import UserRole
+
 IS_PRODUCTION = os.getenv("ENVIRONMENT") == "production"
 
 
@@ -24,7 +26,7 @@ class LoginRequest(BaseModel):
 class CreateUserRequest(BaseModel):
     email: str
     password: str = Field(min_length=6)
-    role: Literal["ops", "manager"]
+    role: UserRole
     username: str
     store_id: Optional[int] = None
     confirm_replace: bool = False
@@ -64,7 +66,7 @@ def get_current_user(
         return {
             "id": str(supabase_user.id),
             "email": supabase_user.email,
-            "role": profile.role,
+            "role": UserRole(profile.role),
             "store_id": profile.store_id
         }
 
@@ -75,7 +77,7 @@ def get_current_user(
         raise HTTPException(status_code=401, detail="Could not validate credentials")
 
 
-def role_required(*roles):
+def role_required(*roles: UserRole):
     def checker(user=Depends(get_current_user)):
         if user["role"] not in roles:
             raise HTTPException(status_code=403, detail="You do not have permission to perform this action")
@@ -111,7 +113,7 @@ def login(credentials: LoginRequest, response: Response, db: Session = Depends(g
             max_age=3600,
         )
 
-        return {"role": user_profile.role}
+        return {"role": UserRole(user_profile.role)}
 
     except HTTPException:
         raise
@@ -134,16 +136,16 @@ def logout(response: Response):
 def create_user(
         user_data: CreateUserRequest,
         db: Session = Depends(get_db),
-        current_user=role_required("ops")
+        current_user=role_required(UserRole.OPS)
 ):
     try:
-        if user_data.role == "ops":
-            existing_ops = db.query(User).filter(User.role == "ops").count()
+        if user_data.role == UserRole.OPS:
+            existing_ops = db.query(User).filter(User.role == UserRole.OPS).count()
             if existing_ops >= 1:
                 raise HTTPException(status_code=400, detail="An ops user already exists. Only one ops user is allowed.")
 
         existing_manager = None
-        if user_data.role == "manager":
+        if user_data.role == UserRole.MANAGER:
             if not user_data.store_id:
                 raise HTTPException(status_code=400, detail="A store must be assigned to a manager account.")
             store = db.query(Store).filter(Store.store_id == user_data.store_id).first()
@@ -152,7 +154,7 @@ def create_user(
 
             existing_manager = db.query(User).filter(
                 User.store_id == user_data.store_id,
-                User.role == "manager",
+                User.role == UserRole.MANAGER,
                 User.is_active == True,
             ).first()
 
@@ -189,7 +191,7 @@ def create_user(
             profile.auth_provider_id = auth_id
             profile.username = user_data.username
             profile.role = user_data.role
-            profile.store_id = user_data.store_id if user_data.role == "manager" else None
+            profile.store_id = user_data.store_id if user_data.role == UserRole.MANAGER else None
             profile.is_active = True
             db.commit()
             return {"status": "success", "message": "Existing profile updated", "user": response.user}
@@ -199,7 +201,7 @@ def create_user(
             username=user_data.username,
             role=user_data.role,
             auth_provider_id=auth_id,
-            store_id=user_data.store_id if user_data.role == "manager" else None,
+            store_id=user_data.store_id if user_data.role == UserRole.MANAGER else None,
             is_active=True,
         )
         db.add(new_profile)
@@ -237,7 +239,7 @@ def update_password(
 @router.get("/admin/stores")
 def list_stores(
         db: Session = Depends(get_db),
-        current_user=role_required("ops")
+        current_user=role_required(UserRole.OPS)
 ):
     stores = db.query(Store).order_by(Store.store_name).all()
     return {
@@ -255,7 +257,7 @@ def list_stores(
 @router.get("/admin/users")
 def list_users(
         db: Session = Depends(get_db),
-        current_user=role_required("ops")
+        current_user=role_required(UserRole.OPS)
 ):
     rows = (
         db.query(User, Store.store_name, Store.location)
@@ -269,7 +271,7 @@ def list_users(
             {
                 "id": u.id,
                 "username": u.username,
-                "role": u.role,
+                "role": UserRole(u.role),
                 "store_id": u.store_id,
                 "store_name": store_name,
                 "store_location": store_location,

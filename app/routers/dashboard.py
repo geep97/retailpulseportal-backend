@@ -1,10 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy import func, extract
-from database import get_db
-from models import Transaction, Product, Inventory, User, Store, Submission
-from routers.auth import get_current_user
+from app.database import get_db
+from app.models import Transaction, Product, Inventory, User, Store, Submission
+from app.routers.auth import get_current_user
 from datetime import date, timedelta
+from app.enums import UserRole
 import logging
 
 logger = logging.getLogger(__name__)
@@ -17,7 +18,7 @@ router = APIRouter(prefix="/api/dashboard", tags=["Dashboard"])
 # ────────────────────────────────────────────────────────────
 
 def apply_role_filter(query, user, model):
-    if user["role"] == "manager":
+    if user["role"] == UserRole.MANAGER:
         if not user["store_id"]:
             raise HTTPException(status_code=403, detail="No store assigned to this account")
         return query.filter(model.store_id == user["store_id"])
@@ -168,7 +169,7 @@ def get_summary(
 
         # Has this store filed its submission for the current week yet?
         week_submitted = False
-        if user["role"] == "manager" and user["store_id"]:
+        if user["role"] == UserRole.MANAGER and user["store_id"]:
             submission = db.query(Submission).filter(
                 Submission.store_id == user["store_id"],
                 extract("isoyear", Submission.week_start) == cur_year,
@@ -244,7 +245,7 @@ def get_revenue_trend(
             )
         )
 
-        if user["role"] == "manager":
+        if user["role"] == UserRole.MANAGER:
             if not user["store_id"]:
                 raise HTTPException(status_code=403, detail="No store assigned")
             query = query.filter(Transaction.store_id == user["store_id"])
@@ -282,7 +283,7 @@ def get_ops_summary(
     iso_week: int | None = None,
 ):
 
-    if user["role"] != "ops":
+    if user["role"] != UserRole.OPS:
         raise HTTPException(status_code=403, detail="Ops only")
 
     try:
@@ -388,7 +389,7 @@ def get_available_weeks(
     mode: str = "submitted",  # "submitted" = weeks with data | "all" = every week up to now
 ):
 
-    if user["role"] not in ["ops", "manager"]:
+    if user["role"] not in (UserRole.OPS, UserRole.MANAGER):
         raise HTTPException(status_code=403, detail="Access denied")
 
     try:
@@ -403,7 +404,7 @@ def get_available_weeks(
                 Submission.status == "active",
                 Submission.week_start.isnot(None),
             )
-            if user["role"] == "manager" and user["store_id"]:
+            if user["role"] == UserRole.MANAGER and user["store_id"]:
                 query = query.filter(Submission.store_id == user["store_id"])
 
             earliest = query.order_by(Submission.week_start.asc()).first()
@@ -506,9 +507,9 @@ def get_inventory_alerts(
     user=Depends(get_current_user)
 ):
 
-    if user["role"] == "manager" and not user["store_id"]:
+    if user["role"] == UserRole.MANAGER and not user["store_id"]:
         raise HTTPException(status_code=403, detail="No store assigned to this account")
-    if user["role"] not in ("manager", "ops"):
+    if user["role"] not in (UserRole.MANAGER, UserRole.OPS):
         raise HTTPException(status_code=403, detail="Access denied")
 
     try:
@@ -531,7 +532,7 @@ def get_inventory_alerts(
 
         all_inventory_query = db.query(func.count(Inventory.inventory_id))
 
-        if user["role"] == "manager":
+        if user["role"] == UserRole.MANAGER:
             query = query.filter(Inventory.store_id == user["store_id"])
             all_inventory_query = all_inventory_query.filter(
                 Inventory.store_id == user["store_id"]

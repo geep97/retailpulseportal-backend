@@ -9,8 +9,8 @@ from alembic import context
 # Fix the path to ensure we can import your models and database
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from models import Base
-from database import SQLALCHEMY_DATABASE_URL
+from app.models import Base
+from app.database import SQLALCHEMY_DATABASE_URL
 
 # This is the Alembic Config object
 config = context.config

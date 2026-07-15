@@ -15,7 +15,6 @@ origins = [
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
-    # This regex allows ANY preview deployment URL from your geep97s-projects Vercel account
     allow_origin_regex=r"https://retailpulseportal-frontend-.*-geep97s-projects\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],

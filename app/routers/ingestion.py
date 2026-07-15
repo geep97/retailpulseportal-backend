@@ -3,9 +3,10 @@ import pandas as pd
 from fastapi import APIRouter, UploadFile, File, Form, HTTPException, Depends
 from sqlalchemy.orm import Session
 from sqlalchemy import extract
-from database import get_db
-from models import Submission, Transaction, Inventory, IntegrityLog, Product
-from routers.auth import role_required, get_current_user
+from app.database import get_db
+from app.models import Submission, Transaction, IntegrityLog, Product
+from app.routers.auth import get_current_user
+from app.enums import UserRole, PaymentMethod
 import logging
 from datetime import date
 
@@ -26,7 +27,7 @@ VALID_CATEGORIES = {
     "Household", "Health & Beauty"
 }
 
-VALID_PAYMENT_METHODS = {"Cash", "Mobile Money", "Bank Card", "Credit"}
+VALID_PAYMENT_METHODS = {method.value for method in PaymentMethod}
 
 
 
@@ -282,7 +283,7 @@ def upload_weekly_ledger(
         user=Depends(get_current_user)
 ):
 
-    if user["role"] != "manager":
+    if user["role"] != UserRole.MANAGER.value:
         raise HTTPException(
             status_code=403,
             detail="Only store managers can upload files."
@@ -411,7 +412,7 @@ def get_upload_history(
         raise HTTPException(status_code=403, detail="No store assigned to your account.")
 
     from sqlalchemy import func as sqlfunc
-    from models import Transaction as Txn
+    from app.models import Transaction as Txn
 
     rows = (
         db.query(
