@@ -25,6 +25,11 @@ app.include_router(auth.router)
 app.include_router(ingestion.router)
 app.include_router(dashboard.router)
 
+
+@app.get("/")
+def read_root():
+    return {"status": "ok", "service": "RetailPulse Portal Core Engine"}
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
